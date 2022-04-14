@@ -1,0 +1,204 @@
+<!-- Home Banner -->
+<div class="container-fluid top-home py-4 py-md-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-12 col-md-6 pe-md-5">
+                <h1>Pesquise a Clínica Veterinária, agende uma consulta para o seu PET.</h1>
+                <p>Pesquise o veterinário e agende uma consulta para o seu Pet.</p>
+                <div class="mt-4">
+                    <!--<input class="form-control form-control-lg mt-4 mt-md-0 mb-4" type="text" placeholder="Nome, clínica, especialidade ou serviço" aria-label="Seleção de nome, clínica, especialidade ou serviço">-->
+                    <ngx-select [allowClear]="true" [items]="especialidades" optionValueField="_id"
+                        optionTextField="nomeFormated" [(ngModel)]="especialidadeEscolhida" style="color: black;"
+                        (selectionChanges)="normalizeNome($event)" (remove)="listarEspecialidades()"
+                        (typed)="inputTyped($event)" class="form-control form-control-lg mt-4 mt-md-0 mb-4"
+                        placeholder="Seleção de nome, clínica, especialidade ou serviço">
+                        <ng-template ngx-select-option let-option>
+
+                            <span *ngIf="!option.data.type"><i class="fas fa-bone fa-lg"
+                                    style="color: rgb(105, 105, 247); padding-right: 10px; "></i></span>
+                            <span *ngIf="option.data.type == 1"><i class="fas fa-bone fa-lg"
+                                    style="color: rgb(105, 105, 247); padding-right: 10px;"></i></span>
+                            <span *ngIf="option.data.type == 2"><i class="fas fa-paw fa-lg"
+                                    style="color: rgb(0, 131, 11);padding-right: 10px; "></i></span>
+                            <span *ngIf="option.data.type == 3"><i class="fas fa-clinic-medical fa-lg"
+                                    style="color: rgb(248, 95, 120);padding-right: 10px;"></i></span>
+                            <span *ngIf="option.data.type == 4"><i class="fas fa-certificate"
+                                    style="color: rgb(246, 248, 95);padding-right: 10px;"></i></span>
+                            <span *ngIf="option.data.type == 5"><i class="fas fa-solid fa-dog fa-lg"
+                                    style="color: rgb(100, 248, 95);padding-right: 10px;"></i></span>
+                            <span>
+                                {{option.data.nome}}
+                            </span>
+
+
+                            <span *ngIf="option.data.type == 1" style="float:right; color:gray">Especialidade</span>
+                            <span *ngIf="option.data.type == 2" style="float:right; color:gray">Veterinário</span>
+                            <span *ngIf="option.data.type == 3" style="float:right; color:gray ">Clínica</span>
+                            <span *ngIf="option.data.type == 4" style="float:right; color:gray ">Adestrador</span>
+                            <span *ngIf="option.data.type == 5" style="float:right; color:gray ">Estética</span>
+
+
+                        </ng-template>
+
+                        <ng-template ngx-select-option-not-found>
+                            Nenhum item encontrado
+                        </ng-template>
+
+                    </ngx-select>
+                    <ngx-select [allowClear]="true" [items]="places" optionValueField="placeId"
+                        optionTextField="description" [(ngModel)]="cidadeEscolhida" style="color: black;"
+                        (typed)="searchLocale($event)" placeholder="Cidade">
+
+
+
+                        <ng-template ngx-select-option let-option>
+                            <i class="fas fa-map-marker-alt" style="padding-right: 10px;"></i>
+                            <span>
+                                {{option.data.description}}
+                            </span>
+
+                        </ng-template>
+
+                        <ng-template ngx-select-option-not-found>
+                            Nenhum lugar localizado
+                        </ng-template>
+
+                    </ngx-select>
+
+                    <button type="button" class="mt-4 mt-md-4 mb-4 btn btn-primary d-block w-100"
+                        (click)="consultar(especialidadeEscolhida)">Pesquisar</button>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <img [src]="pathImage+'pets-desk.png'" alt="coelho, gato, cachorro, preá e papagaio"
+                    class="img-fluid d-none d-md-block img-pets">
+            </div>
+            <div class="col-12 text-center mt-4">
+                <img [src]="pathImage+'pets-mobile.png'" alt="coelho, gato, cachorro, preá e papagaio"
+                    class="img-fluid d-md-none img-pets">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid form-vet-home py-4" id="cadastro-vet">
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <h2>É veterinário ou profissional da área?</h2>
+                <p class="mt-md-4">Faça parte da Vetzco e seja encontrado por milhares de tutores.</p>
+                <p>Cadastre-se. É rápido e fácil.</p>
+            </div>
+            <div class="col-12 col-md-6">
+                <form method="post">
+                    <div>
+                        <div class="mb-3">
+                            <label for="nome" class="form-label"> <span class="text-danger">*</span>Nome</label>
+                            <input type="text" class="form-control" id="nome" [value]="nome"
+                                placeholder="informe o nome">
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label"> <span class="text-danger">*</span>E-mail</label>
+                            <input type="email" class="form-control" id="email" [value]="email"
+                                placeholder="informe o email">
+
+                        </div>
+                        <div class="mb-4">
+                            <label for="role" class="form-label"> <span class="text-danger">*</span>Tipo de
+                                Conta</label>
+                            <select class="form-select form-select-lg mb-4"
+                                aria-label="Seleção de nome, clínica, especialidade ou serviço" id="role">
+                                <option selected></option>
+                                <option value="0">Tutor</option>
+                                <option value="1">Veterinário</option>
+                                <option value="2">Clínica</option>
+                                <option value="3">Adestrador</option>
+                                <option value="4">Estética</option>
+                            </select>
+                        </div>
+
+                        <button type="button" (click)="onMyClick()"
+                            class="btn btn-primary d-block w-100">Cadastrar</button>
+
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid py-5 especialidades-home">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Especialidades</h2>
+            </div>
+        </div>
+    </div>
+    <owl-carousel-o class="owl-carousel owl-theme" [options]="customOptions">
+
+        <ng-container class="text-center py-5" *ngFor="let especialidade of especialidades">
+            <ng-template style="width: 281.6px; margin-right: 0;" carouselSlide [id]="especialidade._id">
+                <img [src]="pathImage+'shapes/'+formataEspec(especialidade.nomeFormated)+'.png'">
+            </ng-template>
+        </ng-container>
+
+    </owl-carousel-o>
+
+
+</div>
+
+<div class="container-fluid pergunte-home">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-5">
+                <h2>Pergunte para um especialista!</h2>
+                <p class="my-4">Sua pergunta será respondida por um profissional especializado! Veja também as perguntas
+                    que já foram feitas por outros tutores.</p>
+                <button type="button" class="btn btn-secondary d-block w-100">Ir para as perguntas e respostas</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid py-5 profissionais-home">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Profissionais em destaque</h2>
+            </div>
+        </div>
+    </div>
+    <owl-carousel-o class="owl-carousel owl-theme" [options]="customOptions">
+
+        <ng-container class="text-center py-5" *ngFor="let doctor of doctors; index as i">
+            <ng-template carouselSlide [id]="doctor._id">
+                <div class="py-5">
+                    <div class="card-vet">
+                        <img [src]="getImageDoctor(doctor)" [alt]="doctor.nome" class="img-fluid" />
+                        <h3>{{doctor.nome}}</h3>
+                        <p>{{doctor.especialidades[0]?.nome}}</p>
+                        <div class="star-rating d-flex align-items-center my-3">
+                            <label *ngFor="let item of [1,2,3,4,5]">
+                                <span *ngIf="starsRate[i] >= item" class="material-icons">star</span>
+                                <span *ngIf="starsRate[i] < item" class="material-icons">star_border</span>
+
+                            </label>
+                            <p>({{doctor.reviews.length}})</p>
+                        </div>
+                        <div class="d-flex align-items-center mb-4">
+                            <span class="material-icons">place</span>
+                            <p>{{doctor.endereco.municipio}}</p>
+                        </div>
+                        <button type="button" class="btn btn-secondary d-block w-100"
+                            (click)="verPerfil(doctor.nome,doctor.especialidades[0]?.nome,doctor.endereco.municipio)">Ver
+                            perfil</button>
+                    </div>
+                </div>
+            </ng-template>
+        </ng-container>
+
+    </owl-carousel-o>
+
+</div>
