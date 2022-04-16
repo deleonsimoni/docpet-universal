@@ -14,7 +14,7 @@ export class EspecialidadeService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<any> {
-    return this.http.get(baseUrl);
+    return this.http.get('https://reqres.in/api/aaa?delay=3');
   }
 
   getAllTotalEspcEstab(): Observable<any> {
