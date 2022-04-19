@@ -85,7 +85,7 @@ export class HomeComponent implements OnInit {
         console.log('access');
       },
       (error) => {
-        console.log(error);
+        console.log('erro ao chamar markaccess');
       }
     );
     this.places = [
