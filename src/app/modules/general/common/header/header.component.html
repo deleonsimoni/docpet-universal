@@ -1,0 +1,45 @@
+<!--Top Header -->
+  <div class="top-bar text-center">
+    <p class="py-2 m-0">É veterinário? Junte-se a nós, <a [routerLink]="'/cadastro'">Cadastre-se agora</a>.</p>
+  </div>
+  <nav class="navbar navbar-dark">
+    <div class="container-fluid">
+      <div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#"><img [src]="pathImage+'logo.png'" alt="Logo Vetzco"></a>
+      </div>
+      <a class="btn btn-menu btn-sm order-md-last" *ngIf="isLogin" [routerLink]="'/login'">Fazer login</a>
+
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <img [src]="pathImage+'logo.png'" alt="Logo Vetzco" />
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active d-flex align-items-center" aria-current="page" href="#"><span class="material-icons">home</span> Página inicial</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link d-flex align-items-center" href="#"><span class="material-icons">search</span> Encontre um especialista</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link d-flex align-items-center" [routerLink]="'/planos'"><span class="material-icons">money</span>Planos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link d-flex align-items-center" [routerLink]="'/blog'"><span class="material-icons">feedback</span>Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link d-flex align-items-center" href="#"><span class="material-icons">question_answer</span>Perguntas e respostas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link d-flex align-items-center" [routerLink]="'/cadastro'"><span class="material-icons">login</span>Faça login ou cadastre-se</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </nav>

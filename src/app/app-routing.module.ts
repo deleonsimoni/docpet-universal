@@ -37,11 +37,6 @@ const routes: Routes = [
       .then(mod => mod.ContactModule)
   },
   {
-    path: 'about',
-    loadChildren: () => import('./modules/general/about/about.module')
-      .then(mod => mod.AboutModule)
-  },
-  {
     path: 'login',
     loadChildren: () => import('./modules/general/login/login.module')
       .then(mod => mod.LoginModule)

@@ -1,27 +1,227 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
-  <meta charset="utf-8">
-  <title>AngularStarter</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta charset="utf-8">
+    <title>Vetzco</title>
+    <link rel=icon type="image/x-icon" href="assets/img/v-icon.ico">
+    <meta name="description" content="Seu PET está com problemas? Na VetzCo você encontra tudo que precisa, desde veterinários renomados até farmácias e laboratórios. Agende hoje sua consulta!">
+    <meta name="keywords" content="clinica veterinária, veterinario, pets, adestrador">
+    <meta property="og:url" content="https://www.vetzco.com.br">
+    <meta name="facebook-domain-verification" content="87i0nvyle8y1rd3v71zgi1ntqy470x" />
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/owl.carousel.css" />
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Material Design Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style type="text/css">
+        .cookieConsentContainer {
+            z-index: 999;
+            width: 350px;
+            min-height: 20px;
+            box-sizing: border-box;
+            padding: 30px 30px 30px 30px;
+            background: #232323;
+            overflow: hidden;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+        }
+        
+        .cookieConsentContainer .cookieTitle a {
+            z-index: 9999;
+            font-family: OpenSans, arial, sans-serif;
+            color: #fff;
+            background: #3e9b67;
+            font-size: 26px;
+            line-height: 26px;
+            display: block;
+        }
+        
+        .cookieConsentContainer .cookieTitle a:hover {
+            z-index: 1000;
+            font-family: OpenSans, arial, sans-serif;
+            color: #fff;
+            background: #3e9b67;
+            font-size: 26px;
+            line-height: 26px;
+            display: block;
+        }
+        
+        .cookieConsentContainer .cookieDesc p {
+            margin: 0;
+            padding: 0;
+            font-family: OpenSans, arial, sans-serif;
+            color: #fff;
+            font-size: 18px;
+            line-height: 20px;
+            display: block;
+            margin-top: 10px;
+        }
+        
+        .cookieConsentContainer .cookieDesc a {
+            font-family: OpenSans, arial, sans-serif;
+            color: #fff;
+            text-decoration: underline;
+        }
+        
+        .cookieConsentContainer .cookieButton a {
+            display: inline-block;
+            font-family: OpenSans, arial, sans-serif;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+            margin-top: 14px;
+            background: #3e9b67;
+            box-sizing: border-box;
+            padding: 15px 24px;
+            text-align: center;
+            transition: background .3s
+        }
+        
+        .cookieConsentContainer .cookieButton a:hover {
+            cursor: pointer;
+            background: #3e9b67;
+        }
+        
+        @media (max-width:980px) {
+            .cookieConsentContainer {
+                bottom: 0!important;
+                left: 0!important;
+                width: 100%!important;
+            }
+        }
+    </style>
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async="" src="https://www.googletagmanager.com/gtag/js?id=YOUR-ID"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC39y1TCyvZP0bU7Pur_SBfySWjSy5qhEg"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=YOUR-ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-    gtag('config', 'YOUR-ID');
-  </script>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
 
-  <link rel="manifest" href="manifest.webmanifest">
-  <meta name="theme-color" content="#1976d2">
+        gtag('config', 'YOUR-ID');
+    </script>
+
+    <!-- <link rel="manifest" href="manifest.webmanifest"> -->
 </head>
-<body>
-  <app-root></app-root>
-  <noscript>Please enable JavaScript to continue using this application.</noscript>
+
+<body class="mat-typography">
+    <app-root></app-root>
+    <noscript>Please enable JavaScript to continue using this application.
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WDTT2J6" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+
+    <style type="text/css">
+        .autocomplete-container {
+            box-shadow: none !important;
+        }
+        
+        .autocomplete-container .suggestions-container {
+            margin-top: 7px;
+        }
+        
+        .ng-autocomplete {
+            padding-top: 0 !important;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="assets/js/owl.carousel.js"></script>
+    <script>
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 30,
+            center: true,
+            nav: true,
+            stagePadding: 120,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 5
+                }
+            }
+        });
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+    <script>
+        var purecookieTitle = "Aceite de Cookies.",
+            purecookieDesc = "Ao usar este site, você aceita automaticamente que usamos cookies.",
+            purecookieLink = '<a href="/politica-privacidade" target="_blank">Politicas de privacidade</a>',
+            purecookieButton = "Aceito";
+
+        function pureFadeIn(e, o) {
+            var i = document.getElementById(e);
+            i.style.opacity = 0, i.style.display = o || "block",
+                function e() {
+                    var o = parseFloat(i.style.opacity);
+                    (o += .02) > 1 || (i.style.opacity = o, requestAnimationFrame(e))
+                }()
+        }
+
+        function pureFadeOut(e) {
+            var o = document.getElementById(e);
+            o.style.opacity = 1,
+                function e() {
+                    (o.style.opacity -= .02) < 0 ? o.style.display = "none" : requestAnimationFrame(e)
+                }()
+        }
+
+        function setCookie(e, o, i) {
+            var t = "";
+            if (i) {
+                var n = new Date;
+                n.setTime(n.getTime() + 24 * i * 60 * 60 * 1e3), t = "; expires=" + n.toUTCString()
+            }
+            document.cookie = e + "=" + (o || "") + t + "; path=/"
+        }
+
+        function getCookie(e) {
+            for (var o = e + "=", i = document.cookie.split(";"), t = 0; t < i.length; t++) {
+                for (var n = i[t];
+                    " " == n.charAt(0);) n = n.substring(1, n.length);
+                if (0 == n.indexOf(o)) return n.substring(o.length, n.length)
+            }
+            return null
+        }
+
+        function eraseCookie(e) {
+            document.cookie = e + "=; Max-Age=-99999999;"
+        }
+
+        function cookieConsent() {
+            getCookie("purecookieDismiss") || (document.body.innerHTML += '<div class="cookieConsentContainer" id="cookieConsentContainer"><div class="cookieTitle"><a>' + purecookieTitle + '</a></div><div class="cookieDesc"><p>' + purecookieDesc + " " + purecookieLink + '</p></div><div class="cookieButton"><a onClick="purecookieDismiss();">' + purecookieButton + "</a></div></div>", pureFadeIn("cookieConsentContainer"))
+        }
+
+        function purecookieDismiss() {
+            setCookie("purecookieDismiss", "1", 7), pureFadeOut("cookieConsentContainer")
+        }
+        window.onload = cookieConsent();
+    </script>
 </body>
+
 </html>
