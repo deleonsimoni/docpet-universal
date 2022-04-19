@@ -30,7 +30,7 @@ export class HeaderComponent implements OnInit {
   comlogo: boolean = true;
   whitelogo: boolean = false;
   page: any;
-  splitVal : any;
+  splitVal: any;
   headerTop: boolean = false;
   menuTopLogin: boolean = false;
   isLogin: boolean = false;
@@ -39,7 +39,7 @@ export class HeaderComponent implements OnInit {
   url1;
   pathImage: any;
   constructor(
-    @Inject(DOCUMENT) private document : any,
+    @Inject(DOCUMENT) private document: any,
     private cdr: ChangeDetectorRef,
     public router: Router,
     private activeRoute: ActivatedRoute,
@@ -53,18 +53,18 @@ export class HeaderComponent implements OnInit {
         this.base = res[1];
         this.page = res[2];
         console.log(this.base);
-        if (this.base == "login"){
+        if (this.base == "login") {
           this.isLogin = false;
-        }else{
+        } else {
           this.isLogin = true;
         }
 
-        if (event.url.indexOf('/admin') !== -1){
+        if (event.url.indexOf('/admin') !== -1) {
           this.menuTopLogin = false;
           this.comrytmenu = false;
           this.auth = true;
-        }else{
-          if (event.url.indexOf('/home') !== -1){
+        } else {
+          if (event.url.indexOf('/home') !== -1) {
             this.headerTop = true;
           }
           this.user ? this.menuTopLogin = true : this.menuTopLogin = false;
@@ -97,7 +97,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.pathImage = "https://vetzco-site.s3.sa-east-1.amazonaws.com/";
     this.user = this.userService.getUser();
-    console.log(this.user);
     if (localStorage.getItem('auth') === 'true') {
       this.auth = true;
       this.isPatient =
@@ -106,32 +105,32 @@ export class HeaderComponent implements OnInit {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
         //$('html').removeClass('menu-opened');
-       // $('.sidebar-overlay').removeClass('opened');
-       // $('.main-wrapper').removeClass('slide-nav');
+        // $('.sidebar-overlay').removeClass('opened');
+        // $('.main-wrapper').removeClass('slide-nav');
       }
     });
 
-      /*  $(window).scroll(function(){
-        var scroll = $(window).scrollTop();
-          if (scroll > 95) {
-          $(".header-trans").css("background" , "#FFFFFF");
+    /*  $(window).scroll(function(){
+      var scroll = $(window).scrollTop();
+        if (scroll > 95) {
+        $(".header-trans").css("background" , "#FFFFFF");
+        }
+
+        else{
+          $(".header-trans").css("background" , "transparent");
+        }
+        if (scroll > 95) {
+          $(".header-trans.custom").css("background" , "#2b6ccb");
           }
 
           else{
-            $(".header-trans").css("background" , "transparent");
+            $(".header-trans.custom").css("background" , "transparent");
           }
-          if (scroll > 95) {
-            $(".header-trans.custom").css("background" , "#2b6ccb");
-            }
-
-            else{
-              $(".header-trans.custom").css("background" , "transparent");
-            }
-        })
-        */
+      })
+      */
   }
 
-  sair(){
+  sair() {
     this.userService.logout();
     window.location.href = '/home';
   }
@@ -147,7 +146,7 @@ export class HeaderComponent implements OnInit {
     document.head.appendChild(script);
     script.onload = () => this.doSomethingWhenScriptIsLoaded();
   }
-  doSomethingWhenScriptIsLoaded() {}
+  doSomethingWhenScriptIsLoaded() { }
   change(name: any) {
     this.page = name;
     //this.commonService.nextmessage('main');
@@ -226,7 +225,7 @@ export class HeaderComponent implements OnInit {
     this.isPatient = false;
     this.router.navigate(['/login']);
   }
-  
+
   clickLogout() {
     localStorage.clear();
     this.userService.logout();
@@ -244,7 +243,7 @@ export class HeaderComponent implements OnInit {
     this.page = name;
     if (name === 'Admin') {
       this.router.navigate(['/admin']);
-     // this.commonService.nextmessage('admin');
+      // this.commonService.nextmessage('admin');
     } else if (name === 'Pharmacy Admin') {
       this.router.navigate(['/pharmacy-admin']);
       //this.commonService.nextmessage('pharmacy-admin');
