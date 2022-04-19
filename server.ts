@@ -15,7 +15,7 @@ const domino = require("domino");
 const fs = require("fs");
 const path = require("path");
 const templateA = fs
-  .readFileSync(path.join("dist/browser", "index.html"))
+  .readFileSync(path.join("dist/angular-starter/browser", "index.html"))
   .toString();
 const win = domino.createWindow(templateA);
 win.Object = Object;
