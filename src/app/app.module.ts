@@ -15,12 +15,13 @@ import { ToastrModule } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    HeaderComponent, 
+    HeaderComponent,
     FooterComponent,
     NotFoundComponent,
   ],
@@ -32,6 +33,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
     FormsModule,
     NgxSelectModule,
     SlickCarouselModule,
+    BrowserAnimationsModule,
     CarouselModule,
     NgxSpinnerModule,
     ToastrModule.forRoot()
