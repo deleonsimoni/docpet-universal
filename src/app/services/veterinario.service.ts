@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { environment } from './../../environments/environment';
+import { TransferHttpService } from '@gorniv/ngx-transfer-http';
 
 const baseUrl = environment.apiURL + 'veterinarios';
 
@@ -12,7 +13,7 @@ const baseUrl = environment.apiURL + 'veterinarios';
 
 export class VeterinarioService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: TransferHttpService) { }
 
   getByCRMV(crmv: any): Observable<any> {
     return this.http.get(`${baseUrl}/crmv/${crmv}`);

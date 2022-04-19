@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { environment } from './../../environments/environment';
+import { TransferHttpService } from '@gorniv/ngx-transfer-http';
 
 const baseUrl = environment.apiURL + 'especialidades';
 
@@ -11,10 +12,10 @@ const baseUrl = environment.apiURL + 'especialidades';
 })
 export class EspecialidadeService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: TransferHttpService) { }
 
   getAll(): Observable<any> {
-    return this.http.get('https://reqres.in/api/aaa?delay=3');
+    return this.http.get(baseUrl);
   }
 
   getAllTotalEspcEstab(): Observable<any> {

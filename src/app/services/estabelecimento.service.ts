@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { environment } from './../../environments/environment';
+import { TransferHttpService } from '@gorniv/ngx-transfer-http';
 
 const baseUrl = environment.apiURL + 'estabelecimentos';
 
@@ -11,7 +12,7 @@ const baseUrl = environment.apiURL + 'estabelecimentos';
 })
 export class EstabelecimentoService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: TransferHttpService) { }
 
   getAll(): Observable<any> {
     return this.http.get(baseUrl);

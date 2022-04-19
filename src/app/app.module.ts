@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, BrowserTransferStateModule, TransferState } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -22,14 +22,19 @@ import { NgxSelectModule } from 'ngx-select-ex';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { ToastrModule } from 'ngx-toastr';
+import { TransferHttpModule, TransferHttpService } from '@gorniv/ngx-transfer-http';
 
 
 @NgModule({
+  providers: [TransferHttpService],
   imports: [
     BrowserModule.withServerTransition({ appId: 'tour-of-heroes' }),
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    TransferHttpModule,
+
+    BrowserTransferStateModule,
 
     CommonModule,
     FormsModule,

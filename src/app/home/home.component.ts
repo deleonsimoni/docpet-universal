@@ -76,7 +76,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.listarEspecialidades();
-    return;
     this.docNameFormated = this.formatarParamUrl(this.route.snapshot.params['nome']);
     this.pathImage = "https://vetzco-site.s3.sa-east-1.amazonaws.com/";
     this.getDoctorsDetails();
