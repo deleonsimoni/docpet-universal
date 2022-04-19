@@ -7,6 +7,21 @@ import { join } from 'path';
 import { AppServerModule } from './src/main.server';
 import { APP_BASE_HREF } from '@angular/common';
 import { existsSync } from 'fs';
+import 'localstorage-polyfill'
+
+global['localStorage'] = localStorage;
+
+const domino = require("domino");
+const fs = require("fs");
+const path = require("path");
+const templateA = fs
+  .readFileSync(path.join("dist/browser", "index.html"))
+  .toString();
+const win = domino.createWindow(templateA);
+win.Object = Object;
+win.Math = Math;
+global["window"] = win;
+global["document"] = win.document;
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {

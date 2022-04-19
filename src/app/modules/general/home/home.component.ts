@@ -75,7 +75,7 @@ export class HomeComponent implements OnInit {
     private esteticaService: EsteticaService) { }
 
   ngOnInit(): void {
-    this.listarEspecialidades();
+    //this.listarEspecialidades();
     this.docNameFormated = this.formatarParamUrl(this.route.snapshot.params['nome']);
     this.pathImage = "https://vetzco-site.s3.sa-east-1.amazonaws.com/";
     this.getDoctorsDetails();
@@ -145,10 +145,10 @@ export class HomeComponent implements OnInit {
       this.inscrever = false;
       this.nome = this.formataUrlCadastro((<HTMLInputElement>document.getElementById("nome")).value);
       this.email = this.formataUrlCadastro((<HTMLInputElement>document.getElementById("email")).value);
-     // this.role = this.formataUrlCadastro($("#role option:selected").text());
+      // this.role = this.formataUrlCadastro($("#role option:selected").text());
       //this.role = document.getElementById("role")["value"];
       this.dadosCadastro.push({ nome: this.nome, email: this.email, role: this.role });
-     
+
       this.router.navigate(['/cadastro/' + this.nome + '/' + this.email + '/' + this.role]);
 
     } else {
