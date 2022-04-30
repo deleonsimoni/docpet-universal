@@ -69,6 +69,12 @@ const routes: Routes = [
     loadChildren: () => import('./modules/general/clinic-profile/clinic-profile.module')
       .then((m) => m.ClinicProfileModule),
   },
+  {
+    path: 'registro',
+    loadChildren: () =>
+      import('./modules/general/register/register.module')
+        .then((m) => m.RegisterModule),
+  },
 
   { path: '**', component: NotFoundComponent },
 
