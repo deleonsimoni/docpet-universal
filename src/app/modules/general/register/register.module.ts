@@ -7,19 +7,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
 import { NgSelect2Module } from 'ng-select2';
 import { AgmCoreModule } from '@agm/core';
-import { MensagemModule } from '../mensagem/mensagem.module';
+import { MensagemComponent } from '../mensagem/mensagem.component';
 
 
 @NgModule({
   declarations: [
-    RegisterComponent
+    RegisterComponent,
+    MensagemComponent
   ],
   imports: [
     CommonModule,
     RegisterRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    MensagemModule,
     NgxMaskModule.forChild(),
     NgSelect2Module,
     AgmCoreModule.forRoot({

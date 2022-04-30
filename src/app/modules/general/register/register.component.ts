@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Veterinario } from '../../application/model/veterinario';
 import { CEPService } from '../../application/services/cep.service';
 import { CommonService } from '../../application/services/common.service';
 import { EspecialidadeService } from '../../application/services/especialidades.service';
@@ -38,7 +39,7 @@ export class RegisterComponent implements OnInit {
   veterinarios: FormArray;
   isLoading = false;
   pathImage;
-  formDataImg = null;
+  formDataImg;
 
   listaAnos = [];
   meses = [{ id: 1, mes: 'Janeiro', abreviado: 'Jan' },
@@ -71,7 +72,7 @@ export class RegisterComponent implements OnInit {
     var ano = new Date().getFullYear();
     this.pathImage = 'http://www.gugaweigert.com.br/vetzcoImagens/';
     console.log("path:" + this.pathImage);
-    var anos = [];
+    var anos: any = [];
     anos.push(ano);
     for (var i = 1; i < 40; i++) {
       anos.push(ano - i);
@@ -307,7 +308,7 @@ export class RegisterComponent implements OnInit {
   }
 
   async salvarImagem() {
-    let avatar = null;
+    let avatar;
     if (this.formDataImg) {
 
       await this.uploadImagemService.createAwait(this.formDataImg).then((data) => {
@@ -337,9 +338,9 @@ export class RegisterComponent implements OnInit {
         this.toastr.warning('Preencha o campo Celular!', 'Atenção!');
         return;
       }
-      this.form.get('contato')?.value.celular = this.form.get('celular')?.value;
-      this.form.get('contato').value.nome = this.form.get('nome')?.value;
-      this.form.get('contato').value.email = this.form.get('email')?.value;
+      this.form.get('contato')!.value.celular = this.form.get('celular')?.value;
+      this.form.get('contato')!.value.nome = this.form.get('nome')?.value;
+      this.form.get('contato')!.value.email = this.form.get('email')?.value;
 
       /*if (!this.form.get('formacoes').value[0].nomeInstituicao
         || !this.form.get('formacoes').value[0].curso

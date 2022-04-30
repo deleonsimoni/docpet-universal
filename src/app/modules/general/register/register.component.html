@@ -62,7 +62,7 @@
                                                     <input type="text" class="form-control" formControlName="nome"
                                                         (blur)="verifyAllFieldsRole()">
                                                     <app-mensagem *ngIf="
-                                      form.get('nome')?.errors?.required &&
+                                      form.get('nome')?.errors!['required'] &&
                                       form.get('nome')?.touched" mensagem="O nome é obrigatório">
                                                     </app-mensagem>
                                                 </div>
@@ -73,7 +73,7 @@
                                                     <input type="email" class="form-control" formControlName="email"
                                                         (blur)="verifyAllFieldsRole()">
                                                     <app-mensagem *ngIf="
-                                        form.get('email')?.errors?.required &&
+                                        form.get('email')?.errors!['required'] &&
                                         form.get('email')?.touched
                                         " mensagem="O email é obrigatório"></app-mensagem>
                                                 </div>
@@ -144,7 +144,7 @@
                                             <input type="password" class="form-control" formControlName="password"
                                                 (blur)="verifyAllFieldsRole()" #crmv>
                                             <app-mensagem *ngIf="
-                                form.get('password')?.errors?.required &&
+                                form.get('password')?.errors!['required'] &&
                                 form.get('password')?.touched" mensagem="A senha é obrigatório">
                                             </app-mensagem>
                                         </div>
@@ -155,7 +155,7 @@
                                             <input type="password" class="form-control"
                                                 formControlName="confirmpassword" (blur)="verifyAllFieldsRole()">
                                             <app-mensagem *ngIf="
-                                  form.get('confirmpassword')?.errors?.required &&
+                                  form.get('confirmpassword')?.errors!['required'] &&
                                   form.get('confirmpassword')?.touched
                                   " mensagem="Confirmação de senha é obrigatória"></app-mensagem>
                                         </div>
@@ -215,7 +215,7 @@
                                                         <input type="text" class="form-control" formControlName="crmv"
                                                             (blur)="verifyAllFieldsRole1()" #crmv>
                                                         <app-mensagem *ngIf="
-                                  form.get('crmv')?.errors?.required &&
+                                  form.get('crmv')?.errors!['required'] &&
                                   form.get('crmv')?.touched" mensagem="CRMV é obrigatório">
                                                         </app-mensagem>
                                                     </div>
@@ -228,7 +228,7 @@
                                                             style="text-transform: uppercase;"
                                                             (blur)="verifyAllFieldsRole2()">
                                                         <app-mensagem *ngIf="
-                            form.get('uf')?.errors?.required &&
+                            form.get('uf')?.errors!['required'] &&
                             form.get('uf')?.touched" mensagem="UF é obrigatório">
                                                         </app-mensagem>
                                                     </div>
@@ -259,7 +259,7 @@
                                                 <input type="text" class="form-control" #cnpj formControlName="cnpj"
                                                     mask="00.000.000/0000-00" (blur)="verifyAllFieldsRole2()">
                                                 <app-mensagem *ngIf="
-                              form.get('cnpj')?.errors?.required &&
+                              form.get('cnpj')?.errors!['required'] &&
                               form.get('cnpj')?.touched" mensagem="CNPJ é obrigatório">
                                                 </app-mensagem>
                                             </div>
@@ -290,7 +290,7 @@
                                                         <input type="text" class="form-control" formControlName="rg"
                                                             (blur)="verifyAllFieldsRole3()" #rg>
                                                         <app-mensagem *ngIf="
-                                  form.get('rg')?.errors?.required &&
+                                  form.get('rg')?.errors!['required'] &&
                                   form.get('rg')?.touched" mensagem="RG é obrigatório">
                                                         </app-mensagem>
                                                     </div>
@@ -324,7 +324,7 @@
                                                         <input type="text" class="form-control" formControlName="rg"
                                                             (blur)="verifyAllFieldsRole4()" #rg>
                                                         <app-mensagem *ngIf="
-                                  form.get('rg')?.errors?.required &&
+                                  form.get('rg')?.errors!['required'] &&
                                   form.get('rg')?.touched" mensagem="RG é obrigatório">
                                                         </app-mensagem>
                                                     </div>
