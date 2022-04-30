@@ -1,4 +1,5 @@
 .breadcrumb-bar {
+    background-color: #15558d;
     padding: 15px 0;
     /*margin-top: 6em;*/
 }
@@ -38,3 +39,27 @@ body {
 }
 
 .placement {}
+
+#module-especialidade {}
+
+#module-especialidade #collapseExample.collapse:not(.show) {
+    display: block;
+    height: 7rem;
+    overflow: hidden;
+}
+
+#module-especialidade #collapseExample.collapsing {
+    height: 7rem;
+}
+
+#module-especialidade a.collapsed::after {
+    content: '+ mais';
+    color: #20c0f3;
+    font-size: 14px;
+}
+
+#module-especialidade a:not(.collapsed)::after {
+    content: '- menos';
+    color: #20c0f3;
+    font-size: 14px;
+}

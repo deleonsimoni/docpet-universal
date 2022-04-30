@@ -10,7 +10,7 @@ const routes: Routes = [
     path: 'httpclient',
     loadChildren: () => import('./modules/application/items/items.module')
       .then(mod => mod.ItemsModule)
-  },  
+  },
   {
     path: 'forms',
     loadChildren: () => import('./modules/application/example-forms/tutorial.module')
@@ -46,13 +46,38 @@ const routes: Routes = [
     loadChildren: () => import('./modules/general/signup/signup.module')
       .then(mod => mod.SignupModule)
   },
-  { path: '**', component: NotFoundComponent }
+
+  {
+    path: 'list/:especialidade/:municipio',
+    loadChildren: () => import('./modules/general/doctor-list/doctor-list.module')
+      .then((m) => m.DoctorListModule),
+  },
+
+  {
+    path: 'perguntas-respostas',
+    loadChildren: () => import('./modules/general/questions-answers/questions-answers.module')
+      .then((m) => m.QuestionsAnswersModule),
+  },
+
+  {
+    path: 'doctor/:nome/:especialidade/:municipio',
+    loadChildren: () => import('./modules/general/doctor-profile/doctor-profile.module')
+      .then((m) => m.DoctorProfileModule),
+  },
+  {
+    path: 'clinic/:nome',
+    loadChildren: () => import('./modules/general/clinic-profile/clinic-profile.module')
+      .then((m) => m.ClinicProfileModule),
+  },
+
+  { path: '**', component: NotFoundComponent },
+
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
     initialNavigation: 'enabledBlocking'
-})],
+  })],
   exports: [RouterModule],
   declarations: []
 })

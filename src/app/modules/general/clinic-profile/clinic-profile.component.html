@@ -9,7 +9,7 @@
 
                     </ol>
                 </nav>
-                <h1 class="breadcrumb-title">{{doctorDetails.nome}}</h1>
+                <h1 class="breadcrumb-title">{{clinicDetails.nome}}</h1>
             </div>
         </div>
     </div>
@@ -27,36 +27,38 @@
                     <div class="doc-info-left">
                         <div class="doctor-img">
 
-                            <img class="img-fluid" [src]="getImageDoctor(doctorDetails)">
+                            <img class="img-fluid" [src]="getImage(clinicDetails)">
 
                         </div>
                         <div class="doc-info-cont">
-                            <h4 class="doc-name" *ngIf="doctorDetails">{{doctorDetails.nome}} - {{doctorDetails.crmv}}
-                                {{doctorDetails.uf}}
+                            <h4 class="doc-name" *ngIf="clinicDetails">{{clinicDetails.nome}} - {{clinicDetails.cnpj}}
                             </h4>
                             <div class="rating">
-
                                 <label *ngFor="let item of [1,2,3,4,5]">
                                     <i *ngIf="totalStarFormated >= item" class="fas fa-star filled"></i>
                                     <i *ngIf="totalStarFormated < item" class="fas fa-star"></i>
                                 </label>
                                 <span class="d-inline-block average-rating">({{totalStar.toFixed(1)}})</span>
                             </div>
-                            <p class="doc-speciality" *ngIf="!doctorDetails">BDS, MDS - Oral & Maxillofacial Surgery</p>
-                            <p class="doc-speciality" *ngIf="doctorDetails">{{doctorDetails.Education}}</p>
-                            <p class="doc-department" *ngIf="!doctorDetails"><img
-                                    src="assets/img/specialities/specialities-05.png" class="img-fluid"
-                                    alt="Speciality">
-                                <span> </span>
-                            </p>
-                            <p class="doc-department" *ngFor="let especialidade of doctorDetails.especialidades">
-                                <img src="assets/img/icons/set-cat-02.png" class="img-fluid" alt={{especialidade.nome}}>
-                                <span> {{especialidade.nome}}</span>
-                            </p>
+                            <div id="module-especialidade">
+                                <span class="collapse" id="collapseExample" aria-expanded="false">
+                                    <p class="doc-department"
+                                        *ngFor="let especialidade of clinicDetails.especialidades">
+                                        <img src="assets/img/icons/set-cat-02.png" class="img-fluid"
+                                            alt={{especialidade.nome}}>
+                                        <span> {{especialidade.nome}}</span>
+                                    </p>
+                                </span>
+                                <span class="text-center" *ngIf="clinicDetails.especialidades?.length > 3">
+                                    <a role="button" class="collapsed" data-toggle="collapse" href="#collapseExample"
+                                        aria-expanded="false" aria-controls="collapseExample"></a>
+                                </span>
+                            </div>
                             <div class="clinic-details">
-                                <p class="doc-location" *ngIf="doctorDetails.endereco"><i
-                                        class="fas fa-map-marker-alt"></i> {{doctorDetails.endereco.bairro}} -
-                                    {{doctorDetails.endereco.estado}}
+                                <p class="doc-location" *ngIf="clinicDetails.endereco"><i
+                                        class="fas fa-map-marker-alt"></i> {{clinicDetails.endereco.logradouro}} -
+                                    {{clinicDetails.endereco.numero}} - {{clinicDetails.endereco.bairro}} -
+                                    {{clinicDetails.endereco.municipio}} - {{clinicDetails.endereco.estado}}
                                 </p>
                             </div>
                         </div>
@@ -78,12 +80,11 @@
                                     Dos clientes recomendam
                                 </p>
                             </div>
+
                             <div class="col-12">
-                                <a href="https://api.whatsapp.com/send?phone=5521997701809&text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta%20com%20*{{doctorDetails.nome}}*."
-                                    target="_blank">
-                                    <button type="button" class="btn btn-info" id="botao_agendar_consulta1"
-                                        style="width: 100%;">Agendar consulta</button>
-                                </a>
+                                <!--<a [routerLink]="'/cadastro'">
+									<button type="button" class="btn btn-dark">Cadastre-se</button>
+								</a> -->
 
                             </div>
 
@@ -113,7 +114,6 @@
                         <div class="">
                             <div class="">
 
-
                                 <div class="card-body">
                                     <ul style="font-weight: bold;font-size: 20px;"
                                         class="nav nav-tabs nav-tabs-bottom nav-justified">
@@ -122,6 +122,8 @@
                                         <li class="nav-item"><a class="nav-link" href="#bottom-justified-tab2"
                                                 data-toggle="tab">Localização</a></li>
                                         <li class="nav-item"><a class="nav-link" href="#bottom-justified-tab3"
+                                                data-toggle="tab">Veterinários</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#bottom-justified-tab4"
                                                 data-toggle="tab">Comentários</a></li>
                                         <!--<li class="nav-item"><a class="nav-link" href="#bottom-justified-tab4" data-toggle="tab">Horários</a></li> -->
 
@@ -136,85 +138,40 @@
                                                     <!-- About Details -->
                                                     <div class="widget about-widget">
                                                         <h4 class="widget-title"><b>Sobre</b></h4>
-                                                        <p>{{doctorDetails.sobre}}</p>
+                                                        <p>{{clinicDetails.sobre}}</p>
                                                     </div>
                                                     <!-- /About Details -->
 
-                                                    <!-- Education Details -->
-                                                    <div class="widget education-widget">
-                                                        <h4 class="widget-title">Formação</h4>
-                                                        <div class="experience-box">
-                                                            <ul class="experience-list">
-                                                                <li *ngFor="let formacao of  doctorDetails.formacoes">
-                                                                    <div class="experience-user">
-                                                                        <div class="before-circle"></div>
-                                                                    </div>
-                                                                    <div class="experience-content">
-                                                                        <div class="timeline-content">
-                                                                            <a href="#/"
-                                                                                class="name">{{formacao.nomeInstituicao}}</a>
-                                                                            <div>{{formacao.curso}}</div>
-                                                                            <span class="time">{{formacao.anoInicio}} -
-                                                                                {{formacao.anoFim}}</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
+                                                    <!-- Especialidades List -->
+                                                    <div class="service-list">
+                                                        <h4 class="widget-title"><b>Planos</b></h4>
+                                                        <p>{{clinicDetails.plano ? 'Sim' : 'Não'}}</p>
+                                                        <!--ul class="clearfix">
+                                                            <li></li>
+                                                        </ul> -->
                                                     </div>
-                                                    <!-- /Education Details -->
+                                                    <!-- Especialidades List -->
+                                                    <div class="service-list">
+                                                        <h4 class="widget-title"><b>Especialidade</b></h4>
+                                                        <ul class="clearfix">
+                                                            <li
+                                                                *ngFor="let especialidade of  clinicDetails.especialidades">
+                                                                {{especialidade.nome}}</li>
+                                                        </ul>
+                                                    </div>
+                                                    <!-- /Services List -->
 
-                                                    <!-- Experience Details -->
-                                                    <div class="widget experience-widget">
-                                                        <h4 class="widget-title">Experiência</h4>
-                                                        <div class="experience-box">
-                                                            <ul class="experience-list">
-                                                                <li
-                                                                    *ngFor="let experiencia of doctorDetails.experiencias">
-                                                                    <div class="experience-user">
-                                                                        <div class="before-circle"></div>
-                                                                    </div>
-                                                                    <div class="experience-content">
-                                                                        <div class="timeline-content">
-                                                                            <a href="#/"
-                                                                                class="name">{{experiencia.nomeEstabelecimento}}</a>
-                                                                            <span class="time">{{experiencia.anoInicio}}
-                                                                                -
-                                                                                {{experiencia.anoFim? experiencia.anoFim
-                                                                                :
-                                                                                'Presente'}}</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
+                                                    <!-- Services List -->
+                                                    <div class="service-list">
+                                                        <h4 class="widget-title"><b>Serviços</b></h4>
+                                                        <ul class="clearfix">
+                                                            <li *ngFor="let servico of  clinicDetails.servicos">
+                                                                {{servico.nome}}</li>
+                                                        </ul>
                                                     </div>
-                                                    <!-- /Experience Details -->
+                                                    <!-- /Services List -->
 
-                                                    <!-- Awards Details -->
-                                                    <div class="widget awards-widget">
-                                                        <h4 class="widget-title">Conquista</h4>
-                                                        <div class="experience-box">
-                                                            <ul class="experience-list">
-                                                                <li *ngFor="let conquista of doctorDetails.conquistas">
-                                                                    <div class="experience-user">
-                                                                        <div class="before-circle"></div>
-                                                                    </div>
-                                                                    <div class="experience-content">
-                                                                        <div class="timeline-content">
-                                                                            <p class="exp-year">
-                                                                                {{getMes(conquista.mes)}}
-                                                                                {{conquista.ano}}
-                                                                            </p>
-                                                                            <h4 class="exp-title">{{conquista.nome}}
-                                                                            </h4>
-                                                                            <p>{{conquista.descricao}}</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
+
 
                                                 </div>
                                             </div>
@@ -228,90 +185,110 @@
                                             <div class="row">
                                                 <div class="col-md-12 col-lg-9">
 
-                                                    <div *ngIf="doctorDetails.estabelecimentos
-															&& doctorDetails.estabelecimentos[0]
-															&& !doctorDetails.estabelecimentos[0].cnpj" class="widget awards-widget">
+                                                    <div *ngIf="clinicDetails.endereco" class="widget awards-widget">
 
                                                         <div style="width: 100%;">
-                                                            <agm-map [latitude]="doctorDetails.location.coordinates[1]"
+                                                            <agm-map [latitude]="clinicDetails.location.coordinates[1]"
                                                                 [zoom]="10"
-                                                                [longitude]="doctorDetails.location.coordinates[0]">
+                                                                [longitude]="clinicDetails.location.coordinates[0]">
                                                                 <agm-marker
-                                                                    [latitude]="doctorDetails.location.coordinates[1]"
-                                                                    [longitude]="doctorDetails.location.coordinates[0]">
+                                                                    [latitude]="clinicDetails.location.coordinates[1]"
+                                                                    [longitude]="clinicDetails.location.coordinates[0]">
                                                                 </agm-marker>
                                                             </agm-map>
                                                         </div>
 
                                                         <p class=""> <i class="fas fa-map-marker-alt"></i>
-                                                            {{doctorDetails.endereco?.logradouro}},
-                                                            {{doctorDetails.endereco?.numero}},
-                                                            {{doctorDetails.endereco?.bairro}},
-                                                            {{doctorDetails.endereco?.municipio}},
-                                                            {{doctorDetails.endereco?.estado}}
+                                                            {{clinicDetails.endereco?.logradouro}},
+                                                            {{clinicDetails.endereco?.numero}},
+                                                            {{clinicDetails.endereco?.bairro}},
+                                                            {{clinicDetails.endereco?.municipio}},
+                                                            {{clinicDetails.endereco?.estado}}
                                                         </p>
 
-                                                        <!--<p class=""> <i class="fas fa-phone"></i>
-															{{doctorDetails.contato?.telefone}} -
-															{{doctorDetails.contato?.email}}</p>-->
+                                                        <p class=""> <i class="fas fa-phone"></i>
+                                                            {{clinicDetails.contato?.telefone}} -
+                                                            {{clinicDetails.contato?.email}}
+                                                        </p>
                                                     </div>
 
+                                                    <!--
+                                                    <div *ngIf="clinicDetails.veterinarios
+															&& clinicDetails.veterinarios[0]
+															&& clinicDetails.veterinarios[0].crmv" class="widget awards-widget">
 
-                                                    <div *ngIf="doctorDetails.estabelecimentos
-															&& doctorDetails.estabelecimentos[0]
-															&& doctorDetails.estabelecimentos[0].cnpj" class="widget awards-widget">
-
-                                                        <h4 class="widget-title">Consultórios
-                                                            ({{doctorDetails.estabelecimentos.length}})
+                                                        <h4 class="widget-title">Consultórios ({{clinicDetails.veterinarios.length}})
                                                         </h4>
                                                         <div class="experience-box">
 
-                                                            <div
-                                                                *ngFor="let estabelecimento of doctorDetails.estabelecimentos; let i = index">
+                                                            <div *ngFor="let veterinario of clinicDetails.veterinarios; let i = index">
                                                                 <div style="width: 100%;">
-                                                                    <agm-map
-                                                                        [latitude]="estabelecimento.location.coordinates[1]"
-                                                                        [zoom]="10"
-                                                                        [longitude]="estabelecimento.location.coordinates[0]">
-                                                                        <agm-marker
-                                                                            [latitude]="estabelecimento.location.coordinates[1]"
-                                                                            [longitude]="estabelecimento.location.coordinates[0]">
+                                                                    <agm-map [latitude]="veterinario.location.coordinates[1]" [zoom]="10" [longitude]="veterinario.location.coordinates[0]">
+                                                                        <agm-marker [latitude]="veterinario.location.coordinates[1]" [longitude]="veterinario.location.coordinates[0]">
                                                                         </agm-marker>
                                                                     </agm-map>
                                                                 </div>
 
-                                                                <p class=""> <i class="fas fa-map-marker-alt"></i>
-                                                                    {{estabelecimento.endereco?.logradouro}},
-                                                                    {{estabelecimento.endereco?.numero}},
-                                                                    {{estabelecimento.endereco?.bairro}},
-                                                                    {{estabelecimento.endereco?.municipio}},
-                                                                    {{estabelecimento.endereco?.estado}}
+                                                                <p class=""> <i class="fas fa-map-marker-alt"></i> {{veterinario.endereco?.logradouro}}, {{veterinario.endereco?.numero}}, {{veterinario.endereco?.bairro}}, {{veterinario.endereco?.municipio}}, {{veterinario.endereco?.estado}}
                                                                 </p>
                                                             </div>
 
 
                                                         </div>
                                                     </div>
-
+													-->
                                                 </div>
                                             </div>
 
 
 
 
+                                            <!-- FIM TAB Especialista-->
+                                        </div>
+
+                                        <div class="tab-pane" id="bottom-justified-tab3">
+
+                                            <div class="row">
+                                                <div class="col-md-12 col-lg-9">
+                                                    <div *ngIf="clinicDetails.veterinarios
+															&& clinicDetails.veterinarios[0]
+															&& clinicDetails.veterinarios[0].crmv" class="widget awards-widget">
+
+                                                        <h4 class="widget-title">Veterinários
+                                                            ({{clinicDetails.veterinarios.length}})
+                                                        </h4>
+                                                        <div class="experience-box">
+                                                            <div class="service-list">
+                                                                <h4 class="widget-title"><b>Serviços</b></h4>
+                                                                <ul class="clearfix">
+                                                                    <li
+                                                                        *ngFor="let veterinario of clinicDetails.veterinarios; let i = index">
+                                                                        <a style="cursor: pointer"
+                                                                            (click)="redirectPerfilVet(veterinario)">
+                                                                            <img class="avatar rounded-circle"
+                                                                                [src]="getImage(veterinario)">
+                                                                            {{veterinario.nome}}
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                             <!-- FIM TAB LOCALIZACAO-->
                                         </div>
 
-
-                                        <div class="tab-pane" id="bottom-justified-tab3">
+                                        <div class="tab-pane" id="bottom-justified-tab4">
 
                                             <!--<div *ngIf="!doctorDetails.reviews">
 												<h4>Este médico ainda não possui feedback</h4>
 												<hr>
 											</div>-->
                                             <hr>
-                                            <div *ngIf="doctorDetails.reviews">
-                                                <div class="comment" *ngFor="let review of doctorDetails.reviews">
+                                            <div *ngIf="clinicDetails.reviews">
+                                                <div class="comment" *ngFor="let review of clinicDetails.reviews">
                                                     <img class="avatar rounded-circle" alt="User Image"
                                                         src="https://image.freepik.com/vetores-gratis/medico-icone-ou-avatar-em-branco_136162-58.jpg">
                                                     <div class="comment-body">
@@ -355,7 +332,7 @@
                                             </div>
 
                                             <div class="write-review">
-                                                <h4>O que você tem a dizer sobre <strong>{{doctorDetails.nome}}</strong>
+                                                <h4>O que você tem a dizer sobre <strong>{{clinicDetails.nome}}</strong>
                                                 </h4>
 
                                                 <!-- Write Review Form -->

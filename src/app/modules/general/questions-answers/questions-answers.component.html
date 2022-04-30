@@ -1,0 +1,292 @@
+<!--<div class="main-wrapper">-->
+<!-- Breadcrumb -->
+<!-- <div class="breadcrumb-bar">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col">
+                    <nav aria-label="breadcrumb" class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a>Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Pergunte ao Especialista</li>
+                        </ol>
+                    </nav>
+                    <h1 class="breadcrumb-title">Pergunte ao Especialista</h1>
+                </div>
+            </div>
+        </div>
+    </div>-->
+<!-- /Breadcrumb -->
+
+<!-- pergunte Banner -->
+<section class="section section-search-2">
+    <div class="container">
+        <div class="row">
+            <div id="locImg" class="col-md-2">
+                <!--<img src="assets/img/banner-1.png" class="img-fluid search-img" alt="" >-->
+            </div>
+            <div class="col-md-8">
+                <div class="search-area bg-white">
+                    <h2 class="text-center">Pesquise uma especialidade e faça uma pergunta</h2>
+                    <div class="search-input">
+                        <div class="row">
+                            <div class="col-12 col-md-12">
+                                <div class="form-group">
+                                    <label>Especialidade <span class="text-danger">*</span></label>
+                                    <ngx-select [allowClear]="true" [items]="especialidades" optionValueField="_id"
+                                        optionTextField="nomeFormated" [(ngModel)]="especialidadeEscolhida"
+                                        style="color: black;" (remove)="listarEspecialidades()"
+                                        placeholder="Especialidade...">
+
+
+
+                                        <ng-template ngx-select-option let-option>
+
+                                            <span *ngIf="!option.data.type"><i class="fas fa-bone fa-lg"
+                                                    style="color: rgb(105, 105, 247); padding-right: 10px; "></i></span>
+                                            <span *ngIf="option.data.type == 1"><i class="fas fa-bone fa-lg"
+                                                    style="color: rgb(105, 105, 247); padding-right: 10px;"></i></span>
+
+                                            <span>
+                                                {{option.data.nome}}
+                                            </span>
+
+                                            <span *ngIf="option.data.type == 1"
+                                                style="float:right; color:gray">Especialidade
+                                            </span>
+
+                                        </ng-template>
+
+                                        <ng-template ngx-select-option-not-found>
+                                            Nenhum item encontrado
+                                        </ng-template>
+
+                                    </ngx-select>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-12">
+                                <div class="form-group form-focus">
+                                    <textarea [(ngModel)]="request.pergunta" class="form-control bg-grey floating"
+                                        style="height:150px;" name="pergunta"></textarea>
+                                    <label class="focus-label">Pergunte aqui.. <span
+                                            class="text-danger">*</span></label>
+
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-12">
+                                <h5>Caso queira receber a resposta, deixe seu nome e um contato de preferência</h5>
+                                <p>Não enviaremos mensagens promocionais, o contato será utilizado apenas para enviar as
+                                    respostas dos veterinários.</p>
+                            </div>
+                            <div class="col-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <label>Nome</label>
+                                    <input [(ngModel)]="request.nome" type="text" name="nome" class="form-control"
+                                        value="">
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <label>E-mail</label>
+                                    <input [(ngModel)]="request.email" type="text" name="email" class="form-control"
+                                        value="">
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <label>Whatsapp</label>
+                                    <input [(ngModel)]="request.wpp" mask="(00) 00000-0000"
+                                        placeholder="(00) 00000-0000" type="text" name="whatsapp" class="form-control"
+                                        value="">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="submit-section">
+                            <button (click)="cadastrar()" class="btn btn-primary search-btn submit-btn">Enviar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- /pergunte Banner -->
+<!-- Select Sections-->
+<section class="patient-select">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="select-box">
+                    <div class="d-flex align-items-center">
+                        <div class="image-holder">
+                            <span>
+                                <img src="assets/img/icons/doct-01.png" alt="" />
+                            </span>
+                        </div>
+                        <div>
+                            <h2>Serviço Gratuíto</h2>
+                            <p>Tire suas dúvidas de maneira rápida, fácil e sem custo! Os veterinários especialistas
+                                estão aqui para te ajudar a cuidar cada vez melhor do seu pet.</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="select-box theme">
+                    <div class="d-flex align-items-center">
+                        <div class="image-holder">
+                            <span>
+                                <img src="assets/img/icons/clinic-hover-10.png" alt="" />
+                            </span>
+                        </div>
+                        <div>
+                            <h2>Tempo de Resposta</h2>
+                            <p>Nosso time de veterinários especializados está pronto para receber e responder a sua
+                                dúvida com experiência e rapidez. Uma resposta será postada em até 48h.</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /Select Sections-->
+<section class="book-doctor">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-4 col-sm-4 col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="dash-widget-header">
+                            <span class="dash-widget-icon text-primary border-primary">
+                                <i class="fe fe-users"></i>
+                            </span>
+                            <div class="dash-count">
+                                <h3>{{dashboard.counts.totalPerguntas || 0}}</h3>
+                            </div>
+                        </div>
+                        <div class="dash-widget-info">
+                            <h6 class="text-muted">Perguntas feitas</h6>
+                            <div class="progress progress-sm">
+                                <div class="progress-bar bg-primary w-50"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-sm-4 col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="dash-widget-header">
+                            <span class="dash-widget-icon text-success">
+                                <i class="fe fe-credit-card"></i>
+                            </span>
+                            <div class="dash-count">
+                                <h3>{{dashboard.counts.totalRespostas || 0}}</h3>
+                            </div>
+                        </div>
+                        <div class="dash-widget-info">
+
+                            <h6 class="text-muted">Respostas dadas</h6>
+                            <div class="progress progress-sm">
+                                <div class="progress-bar bg-success w-50"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-sm-4 col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="dash-widget-header">
+                            <span class="dash-widget-icon text-danger border-danger">
+                                <i class="fe fe-money"></i>
+                            </span>
+                            <div class="dash-count">
+                                <h3>{{dashboard.counts.totalProfissionais || 0}}</h3>
+                            </div>
+                        </div>
+                        <div class="dash-widget-info">
+
+                            <h6 class="text-muted">Profissionais que participaram</h6>
+                            <div class="progress progress-sm">
+                                <div class="progress-bar bg-danger w-50"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section class="section section-blogs">
+    <div class="container">
+        <div class="section-header text-center aos aos-init aos-animate" data-aos="fade-up">
+            <h2 style="color:#0071DC;">Perguntas e Respostas</h2>
+            <p class="sub-title">Perguntas com o maior número de respostas dos últimos 30 dias</p>
+        </div>
+
+        <div *ngIf="!perguntas || perguntas.length == 0" class="section-header text-center aos aos-init aos-animate"
+            data-aos="fade-up">
+            <h2 style="color:#0071DC;">Ainda não temos perguntas e respostas</h2>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 col-lg-12 col-sm-12">
+                <div *ngFor="let pergunta of perguntas" id="card1" class="card">
+                    <div class="card-body">
+                        <div class="doctor-question-body">
+                            <h4>{{pergunta.pergunta}}</h4>
+                        </div>
+                        <div *ngFor="let resposta of pergunta.respostas">
+                            <div id="p1" class="pergunta-resposta">
+
+                                <div class="col-md-3 profile-info-widget">
+                                    <div class="col-md-4 booking-doc-img">
+                                        <img src="http://www.gugaweigert.com.br/vetzcoImagens/avatar-mini.jpg"
+                                            alt="Especialidade">
+
+                                    </div>
+                                    <div class="col-md-8 profile-det-info">
+                                        <div class="patient-details">
+                                            <h5><i class="far fa-clock"></i> {{resposta.user.nome}}</h5>
+                                            <a routerLink="/doctor/{{resposta.user._id}}"><button type="button"
+                                                    class="btn btn-primary btn-sm tam100">&nbsp;Perfil&nbsp;</button></a>
+                                            <!--<button type="button" disabled class="btn btn-primary btn-sm mt10 tam100">&nbsp;Agendar&nbsp;</button>-->
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-9" style="float:right;">
+                                    <div class="doctor-answer-content">
+                                        {{resposta.resposta}}
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- /Blog Post -->
+
+        </div>
+
+
+        <div *ngIf="perguntas && perguntas.length > 0" class="view-all text-center mb-10">
+            <button type="button" class="btn btn-primary  mb10">&nbsp;Veja mais&nbsp;</button>
+        </div>
+    </div>
+</section>
+
+<!--</div>-->

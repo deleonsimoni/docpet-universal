@@ -16,6 +16,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxMaskModule } from 'ngx-mask';
 
 
 @NgModule({
@@ -37,7 +38,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
     CarouselModule,
     NgxSpinnerModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    NgxMaskModule.forRoot({ dropSpecialCharacters: false }),
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,227 @@
+@media (min-width: 320px) and (max-width: 900px) {
+    .search-area {
+        background: #ffffff6b;
+
+        position: relative;
+        z-index: 1;
+        border-radius: 10px;
+        max-width: 100%;
+        margin: 15px 0;
+    }
+
+    .section-search-2 {
+        background: #4d72d0;
+        padding-bottom: 0px;
+
+    }
+
+    #locImg {
+        display: none;
+    }
+
+    .patient-select {
+        background: url("http://www.gugaweigert.com.br/vetzcoImagens/img-transparente.png");
+        padding: 20px 0;
+        background-size: cover;
+        background-color: #2264c5;
+    }
+
+    .select-box {
+        background: url("http://www.gugaweigert.com.br/vetzcoImagens/img-transparente.png");
+        padding: 10px;
+        border-radius: 60px 10px 10px 60px;
+        border: 5px solid rgba(255, 255, 255, 0.8);
+        position: relative;
+        z-index: 1;
+        background-color: #fff;
+    }
+
+    .select-box.theme {
+        background: url("http://www.gugaweigert.com.br/vetzcoImagens/img-transparente.png");
+        border-radius: 10px 60px 60px 10px;
+        background-color: #fff;
+    }
+
+    .doctor-question-body {
+        background: #fff;
+        border: 1px solid #edeff2;
+        border-radius: .2667rem;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .05);
+        padding: 20px;
+        position: relative;
+        width: 100%;
+    }
+
+    .doctor-answer-content {
+        background: #edeff2;
+        border-radius: .2667rem;
+        padding: 25px 30px 30px;
+        position: relative;
+        margin: 10px 0;
+        float: right;
+    }
+
+    .section-blogs {
+        background-color: #f8f9fa;
+        padding: 0;
+    }
+
+    .profile-info-widget .booking-doc-img {
+        margin: 15px 15px 0 0;
+    }
+
+    .profile-info-widget {
+        display: flex;
+        text-align: left;
+        float: left;
+    }
+
+    .mb10 {
+        margin-bottom: 10px;
+    }
+
+    .mt10 {
+        margin-top: 10px;
+    }
+
+    .ml10 {
+        margin-left: 10px;
+    }
+
+    .profile-det-info {
+        overflow: hidden;
+        display: flex;
+        float: left;
+    }
+
+    .patient-details {
+        float: left;
+        margin-left: 10px;
+        margin-top: 15px;
+    }
+
+    .mais {
+        clear: both;
+        display: block;
+        margin-top: 10px;
+        display: none;
+    }
+}
+
+@media (min-width: 901px) and (max-width: 1800px) {
+    .search-area {
+        background: #ffffff6b;
+        padding: 30px 30px;
+        position: relative;
+        z-index: 1;
+        border-radius: 10px;
+        max-width: 100%;
+        margin: 10px 0;
+
+    }
+
+    .section-search-2 {
+        min-height: 200px;
+        background-size: 130%;
+        background-image: url("http://www.gugaweigert.com.br/vetzcoImagens/VetzCo-02.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        padding-bottom: 0px;
+
+
+    }
+
+    #locImg {
+        display: block;
+    }
+
+    .patient-select {
+        background: url("http://www.gugaweigert.com.br/vetzcoImagens/img-transparente.png");
+        padding: 20px 0;
+        background-size: cover;
+        background-color: #2264c5;
+    }
+
+    .select-box {
+        background: url("http://www.gugaweigert.com.br/vetzcoImagens/img-transparente.png");
+        padding: 10px;
+        border-radius: 60px 10px 10px 60px;
+        border: 5px solid rgba(255, 255, 255, 0.8);
+        position: relative;
+        z-index: 1;
+    }
+
+    .select-box.theme {
+        background: url("http://www.gugaweigert.com.br/vetzcoImagens/img-transparente.png");
+        border-radius: 10px 60px 60px 10px;
+    }
+
+    .doctor-question-body {
+        background: #fff;
+        border: 1px solid #edeff2;
+        border-radius: .2667rem;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .05);
+        padding: 20px;
+        position: relative;
+        width: 100%;
+    }
+
+    .doctor-answer-content {
+        background: #edeff2;
+        border-radius: .2667rem;
+        padding: 25px 30px 30px;
+        position: relative;
+        margin: 10px 0;
+        float: right;
+    }
+
+    .section-blogs {
+        background-color: #f8f9fa;
+        padding: 0;
+    }
+
+    .profile-info-widget {
+        display: flex;
+        text-align: left;
+        float: left;
+    }
+
+    .profile-info-widget .booking-doc-img {
+        margin: 15px 15px 0 0;
+    }
+
+    .mb10 {
+        margin-bottom: 10px;
+    }
+
+    .mt10 {
+        margin-top: 10px;
+    }
+
+    .ml10 {
+        margin-left: 10px;
+    }
+
+    .tam100 {
+        width: 100%;
+    }
+
+    .profile-det-info {
+        overflow: hidden;
+        display: flex;
+        float: left;
+    }
+
+    .patient-details {
+        float: left;
+        margin-left: 10px;
+        margin-top: 15px;
+    }
+
+    .mais {
+        clear: both;
+        display: block;
+        margin-top: 10px;
+        display: none;
+    }
+}
