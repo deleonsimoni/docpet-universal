@@ -22,6 +22,7 @@ win.Object = Object;
 win.Math = Math;
 global["window"] = win;
 global["document"] = win.document;
+global["navigator"] = win.navigator;
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {

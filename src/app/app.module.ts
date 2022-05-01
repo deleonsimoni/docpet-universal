@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxMaskModule } from 'ngx-mask';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { NgxMaskModule } from 'ngx-mask';
     BrowserAnimationsModule,
     CarouselModule,
     NgxSpinnerModule,
+    FontAwesomeModule,
     ToastrModule.forRoot(),
     NgxMaskModule.forRoot({ dropSpecialCharacters: false }),
 
