@@ -8,7 +8,8 @@
   border: 0;
 }
 
-.btn-toggle:hover, .btn-toggle:focus {
+.btn-toggle:hover,
+.btn-toggle:focus {
   color: rgba(0, 0, 0, .85);
   background-color: #cfe2ff;
 }
@@ -21,9 +22,7 @@
   transform-origin: .5em 50%;
 }
 
-.btn-toggle[aria-expanded="true"] {
-  color: #0d6efd;
-}
+
 
 .btn-toggle[aria-expanded="true"]::before {
   transform: rotate(90deg);
@@ -37,11 +36,7 @@
   text-decoration: none;
 }
 
-.btn-toggle-nav a:hover, .btn-toggle-nav a:focus {
-  color: #0d6efd;
-  background-color: #cfe2ff;
-  font-weight: bold;
-}
+
 
 @media (min-width: 768px) {
   .bd-layout {

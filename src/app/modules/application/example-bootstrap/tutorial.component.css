@@ -22,9 +22,7 @@
   transform-origin: .5em 50%;
 }
 
-.nga-btn-toggle[aria-expanded="true"] {
-  color: #0d6efd;
-}
+
 
 .nga-btn-toggle[aria-expanded="true"]::before {
   transform: rotate(90deg);
@@ -38,12 +36,7 @@
   text-decoration: none;
 }
 
-.nga-btn-toggle-nav a:hover,
-.nga-btn-toggle-nav a:focus {
-  color: #0d6efd;
-  background-color: #cfe2ff;
-  font-weight: bold;
-}
+
 
 @media (min-width: 768px) {
   .nga-container-layout {
