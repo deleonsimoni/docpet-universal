@@ -1,466 +1,468 @@
 <!-- Breadcrumb -->
 <div class="breadcrumb-bar">
-    <div class="container-fluid">
-        <div class="row align-items-center">
-            <div class="col-md-12 col-12">
-                <nav aria-label="breadcrumb" class="page-breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a [routerLink]="''">Home</a></li>
+	<div class="container-fluid">
+		<div class="row align-items-center">
+			<div class="col-md-12 col-12">
+				<nav aria-label="breadcrumb" class="page-breadcrumb">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a [routerLink]="''">Home</a></li>
 
-                    </ol>
-                </nav>
-                <h1 class="breadcrumb-title">{{doctorDetails.nome}}</h1>
-            </div>
-        </div>
-    </div>
+					</ol>
+				</nav>
+				<h1 class="breadcrumb-title">{{doctorDetails.nome}}</h1>
+			</div>
+		</div>
+	</div>
 </div>
 <!-- /Breadcrumb -->
 
 <!-- Page Content -->
 <div class="content">
-    <div class="container">
+	<div class="container">
 
-        <!-- Doctor Widget -->
-        <div class="card">
-            <div class="card-body">
-                <div class="doctor-widget">
-                    <div class="doc-info-left">
-                        <div class="doctor-img">
+		<!-- Doctor Widget -->
+		<div class="card">
+			<div class="card-body">
+				<div class="doctor-widget">
+					<div class="doc-info-left">
+						<div class="doctor-img">
 
-                            <img class="img-fluid" [src]="getImageDoctor(doctorDetails)">
+							<img class="img-fluid" [src]="getImageDoctor(doctorDetails)">
 
-                        </div>
-                        <div class="doc-info-cont">
-                            <h4 class="doc-name" *ngIf="doctorDetails">{{doctorDetails.nome}} - {{doctorDetails.crmv}}
-                                {{doctorDetails.uf}}
-                            </h4>
-                            <div class="rating">
+						</div>
+						<div class="doc-info-cont">
+							<h4 class="doc-name" *ngIf="doctorDetails">{{doctorDetails.nome}} - {{doctorDetails.crmv}}
+								{{doctorDetails.uf}}
+							</h4>
+							<div class="rating">
 
-                                <label *ngFor="let item of [1,2,3,4,5]">
-                                    <i *ngIf="totalStarFormated >= item" class="fas fa-star filled"></i>
-                                    <i *ngIf="totalStarFormated < item" class="fas fa-star"></i>
-                                </label>
-                                <span class="d-inline-block average-rating">({{totalStar.toFixed(1)}})</span>
-                            </div>
-                            <p class="doc-speciality" *ngIf="!doctorDetails">BDS, MDS - Oral & Maxillofacial Surgery</p>
-                            <p class="doc-speciality" *ngIf="doctorDetails">{{doctorDetails.Education}}</p>
-                            <p class="doc-department" *ngIf="!doctorDetails"><img
-                                    src="assets/img/specialities/specialities-05.png" class="img-fluid"
-                                    alt="Speciality">
-                                <span> </span>
-                            </p>
-                            <p class="doc-department" *ngFor="let especialidade of doctorDetails.especialidades">
-                                <img src="assets/img/icons/set-cat-02.png" class="img-fluid" alt={{especialidade.nome}}>
-                                <span> {{especialidade.nome}}</span>
-                            </p>
-                            <div class="clinic-details">
-                                <p class="doc-location" *ngIf="doctorDetails.endereco"><i
-                                        class="fas fa-map-marker-alt"></i> {{doctorDetails.endereco.bairro}} -
-                                    {{doctorDetails.endereco.estado}}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="doc-info-right">
+								<label *ngFor="let item of [1,2,3,4,5]">
+									<i *ngIf="totalStarFormated >= item" class="fas fa-star filled"></i>
+									<i *ngIf="totalStarFormated < item" class="fas fa-star"></i>
+								</label>
+								<span class="d-inline-block average-rating">({{totalStar.toFixed(1)}})</span>
+							</div>
+							<p class="doc-speciality" *ngIf="!doctorDetails">BDS, MDS - Oral & Maxillofacial Surgery</p>
+							<p class="doc-speciality" *ngIf="doctorDetails">{{doctorDetails.Education}}</p>
+							<p class="doc-department" *ngIf="!doctorDetails"><img
+									src="assets/img/specialities/specialities-05.png" class="img-fluid"
+									alt="Speciality">
+								<span> </span>
+							</p>
+							<p class="doc-department" *ngFor="let especialidade of doctorDetails.especialidades">
+								<img src="assets/img/icons/set-cat-02.png" class="img-fluid" alt={{especialidade.nome}}>
+								<span> {{especialidade.nome}}</span>
+							</p>
+							<div class="clinic-details">
+								<p class="doc-location" *ngIf="doctorDetails.endereco"><i
+										class="fas fa-map-marker-alt"></i> {{doctorDetails.endereco.bairro}} -
+									{{doctorDetails.endereco.estado}}
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="doc-info-right">
 
-                        <div class="row">
-                            <div class="col-12">
-                                <!--<div class="placement">
+						<div class="row">
+							<div class="col-12">
+								<!--<div class="placement">
 									<div (click)="likeIt()" [className]="like ? 'heart is-active' : 'heart'"></div>
 									Marcar como favorito
 								</div>
 								<hr />-->
 
-                            </div>
-                            <div class="col-12">
-                                <h1><a><i class="fa fa-thumbs-up"></i> {{totalLike}}%</a></h1>
-                                <p>
-                                    Dos clientes recomendam
-                                </p>
-                            </div>
-                            <div class="col-12">
-                                <a href="https://api.whatsapp.com/send?phone=5521997701809&text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta%20com%20*{{doctorDetails.nome}}*."
-                                    target="_blank">
-                                    <button type="button" class="btn btn-info" id="botao_agendar_consulta1"
-                                        style="width: 100%;">Agendar consulta</button>
-                                </a>
+							</div>
+							<div class="col-12">
+								<h1><a><i class="fa fa-thumbs-up"></i> {{totalLike}}%</a></h1>
+								<p>
+									Dos clientes recomendam
+								</p>
+							</div>
+							<div class="col-12">
+								<a href="https://api.whatsapp.com/send?phone=5521997701809&text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta%20com%20*{{doctorDetails.nome}}*."
+									target="_blank">
+									<button type="button" class="btn btn-info" id="botao_agendar_consulta1"
+										style="width: 100%;">Agendar consulta</button>
+								</a>
 
-                            </div>
-
-
-                        </div>
+							</div>
 
 
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /Doctor Widget -->
-
-        <!-- Doctor Details Tab -->
-        <div class="card">
-            <div class="card-body pt-0">
+						</div>
 
 
-                <!-- Tab Content -->
-                <br />
-                <div class="tab-content pt-0">
 
-                    <!-- Overview Content -->
-                    <div role="tabpanel" id="doc_overview" class="tab-pane fade show active">
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Doctor Widget -->
 
-                        <div class="">
-                            <div class="">
-
-
-                                <div class="card-body">
-                                    <ul style="font-weight: bold;font-size: 20px;"
-                                        class="nav nav-tabs nav-tabs-bottom nav-justified">
-                                        <li class="nav-item"><a class="nav-link active" href="#bottom-justified-tab1"
-                                                data-toggle="tab">Visão geral</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="#bottom-justified-tab2"
-                                                data-toggle="tab">Localização</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="#bottom-justified-tab3"
-                                                data-toggle="tab">Comentários</a></li>
-                                        <!--<li class="nav-item"><a class="nav-link" href="#bottom-justified-tab4" data-toggle="tab">Horários</a></li> -->
-
-                                    </ul>
-                                    <div class="tab-content">
-                                        <div class="tab-pane show active" id="bottom-justified-tab1">
+		<!-- Doctor Details Tab -->
+		<div class="card">
+			<div class="card-body pt-0">
 
 
-                                            <div class="row">
-                                                <div class="col-md-12 col-lg-9">
+				<!-- Tab Content -->
+				<br />
+				<div class="tab-content pt-0">
 
-                                                    <!-- About Details -->
-                                                    <div class="widget about-widget">
-                                                        <h4 class="widget-title"><b>Sobre</b></h4>
-                                                        <p>{{doctorDetails.sobre}}</p>
-                                                    </div>
-                                                    <!-- /About Details -->
+					<!-- Overview Content -->
+					<div role="tabpanel" id="doc_overview" class="tab-pane fade show active">
 
-                                                    <!-- Education Details -->
-                                                    <div class="widget education-widget">
-                                                        <h4 class="widget-title">Formação</h4>
-                                                        <div class="experience-box">
-                                                            <ul class="experience-list">
-                                                                <li *ngFor="let formacao of  doctorDetails.formacoes">
-                                                                    <div class="experience-user">
-                                                                        <div class="before-circle"></div>
-                                                                    </div>
-                                                                    <div class="experience-content">
-                                                                        <div class="timeline-content">
-                                                                            <a href="#/"
-                                                                                class="name">{{formacao.nomeInstituicao}}</a>
-                                                                            <div>{{formacao.curso}}</div>
-                                                                            <span class="time">{{formacao.anoInicio}} -
-                                                                                {{formacao.anoFim}}</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <!-- /Education Details -->
-
-                                                    <!-- Experience Details -->
-                                                    <div class="widget experience-widget">
-                                                        <h4 class="widget-title">Experiência</h4>
-                                                        <div class="experience-box">
-                                                            <ul class="experience-list">
-                                                                <li
-                                                                    *ngFor="let experiencia of doctorDetails.experiencias">
-                                                                    <div class="experience-user">
-                                                                        <div class="before-circle"></div>
-                                                                    </div>
-                                                                    <div class="experience-content">
-                                                                        <div class="timeline-content">
-                                                                            <a href="#/"
-                                                                                class="name">{{experiencia.nomeEstabelecimento}}</a>
-                                                                            <span class="time">{{experiencia.anoInicio}}
-                                                                                -
-                                                                                {{experiencia.anoFim? experiencia.anoFim
-                                                                                :
-                                                                                'Presente'}}</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <!-- /Experience Details -->
-
-                                                    <!-- Awards Details -->
-                                                    <div class="widget awards-widget">
-                                                        <h4 class="widget-title">Conquista</h4>
-                                                        <div class="experience-box">
-                                                            <ul class="experience-list">
-                                                                <li *ngFor="let conquista of doctorDetails.conquistas">
-                                                                    <div class="experience-user">
-                                                                        <div class="before-circle"></div>
-                                                                    </div>
-                                                                    <div class="experience-content">
-                                                                        <div class="timeline-content">
-                                                                            <p class="exp-year">
-                                                                                {{getMes(conquista.mes)}}
-                                                                                {{conquista.ano}}
-                                                                            </p>
-                                                                            <h4 class="exp-title">{{conquista.nome}}
-                                                                            </h4>
-                                                                            <p>{{conquista.descricao}}</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-
-                                            <!-- FIM DA ABA-->
-                                        </div>
+						<div class="">
+							<div class="">
 
 
-                                        <div class="tab-pane" id="bottom-justified-tab2">
 
-                                            <div class="row">
-                                                <div class="col-md-12 col-lg-9">
+								<div class="card-body">
+									<ul style="font-weight: bold;font-size: 20px;"
+										class="nav nav-tabs nav-tabs-bottom nav-justified">
+										<li class="nav-item"><a class="nav-link active" href="#bottom-justified-tab1"
+												(click)="preventRedirect($event)" target="_self" data-toggle="tab">Visão
+												geral</a></li>
+										<li class="nav-item"><a class="nav-link" href="#bottom-justified-tab2"
+												(click)="preventRedirect($event)" data-toggle="tab">Localização</a></li>
+										<li class="nav-item"><a class="nav-link" href="#bottom-justified-tab3"
+												(click)="preventRedirect($event)" data-toggle="tab">Comentários</a></li>
+										<!--<li class="nav-item"><a class="nav-link" href="#bottom-justified-tab4" data-toggle="tab">Horários</a></li> -->
 
-                                                    <div *ngIf="doctorDetails.estabelecimentos
+									</ul>
+									<div class="tab-content">
+										<div class="tab-pane show active" id="bottom-justified-tab1">
+
+
+											<div class="row">
+												<div class="col-md-12 col-lg-9">
+
+													<!-- About Details -->
+													<div class="widget about-widget">
+														<h4 class="widget-title"><b>Sobre</b></h4>
+														<p>{{doctorDetails.sobre}}</p>
+													</div>
+													<!-- /About Details -->
+
+													<!-- Education Details -->
+													<div class="widget education-widget">
+														<h4 class="widget-title">Formação</h4>
+														<div class="experience-box">
+															<ul class="experience-list">
+																<li *ngFor="let formacao of  doctorDetails.formacoes">
+																	<div class="experience-user">
+																		<div class="before-circle"></div>
+																	</div>
+																	<div class="experience-content">
+																		<div class="timeline-content">
+																			<a href="#/"
+																				class="name">{{formacao.nomeInstituicao}}</a>
+																			<div>{{formacao.curso}}</div>
+																			<span class="time">{{formacao.anoInicio}} -
+																				{{formacao.anoFim}}</span>
+																		</div>
+																	</div>
+																</li>
+															</ul>
+														</div>
+													</div>
+													<!-- /Education Details -->
+
+													<!-- Experience Details -->
+													<div class="widget experience-widget">
+														<h4 class="widget-title">Experiência</h4>
+														<div class="experience-box">
+															<ul class="experience-list">
+																<li
+																	*ngFor="let experiencia of doctorDetails.experiencias">
+																	<div class="experience-user">
+																		<div class="before-circle"></div>
+																	</div>
+																	<div class="experience-content">
+																		<div class="timeline-content">
+																			<a href="#/"
+																				class="name">{{experiencia.nomeEstabelecimento}}</a>
+																			<span class="time">{{experiencia.anoInicio}}
+																				-
+																				{{experiencia.anoFim? experiencia.anoFim
+																				:
+																				'Presente'}}</span>
+																		</div>
+																	</div>
+																</li>
+															</ul>
+														</div>
+													</div>
+													<!-- /Experience Details -->
+
+													<!-- Awards Details -->
+													<div class="widget awards-widget">
+														<h4 class="widget-title">Conquista</h4>
+														<div class="experience-box">
+															<ul class="experience-list">
+																<li *ngFor="let conquista of doctorDetails.conquistas">
+																	<div class="experience-user">
+																		<div class="before-circle"></div>
+																	</div>
+																	<div class="experience-content">
+																		<div class="timeline-content">
+																			<p class="exp-year">
+																				{{getMes(conquista.mes)}}
+																				{{conquista.ano}}
+																			</p>
+																			<h4 class="exp-title">{{conquista.nome}}
+																			</h4>
+																			<p>{{conquista.descricao}}</p>
+																		</div>
+																	</div>
+																</li>
+															</ul>
+														</div>
+													</div>
+
+												</div>
+											</div>
+
+											<!-- FIM DA ABA-->
+										</div>
+
+
+										<div class="tab-pane" id="bottom-justified-tab2">
+
+											<div class="row">
+												<div class="col-md-12 col-lg-9">
+
+													<div *ngIf="doctorDetails.estabelecimentos
 															&& doctorDetails.estabelecimentos[0]
 															&& !doctorDetails.estabelecimentos[0].cnpj" class="widget awards-widget">
 
-                                                        <div style="width: 100%;">
-                                                            <agm-map [latitude]="doctorDetails.location.coordinates[1]"
-                                                                [zoom]="10"
-                                                                [longitude]="doctorDetails.location.coordinates[0]">
-                                                                <agm-marker
-                                                                    [latitude]="doctorDetails.location.coordinates[1]"
-                                                                    [longitude]="doctorDetails.location.coordinates[0]">
-                                                                </agm-marker>
-                                                            </agm-map>
-                                                        </div>
+														<div style="width: 100%;">
+															<agm-map [latitude]="doctorDetails.location.coordinates[1]"
+																[zoom]="10"
+																[longitude]="doctorDetails.location.coordinates[0]">
+																<agm-marker
+																	[latitude]="doctorDetails.location.coordinates[1]"
+																	[longitude]="doctorDetails.location.coordinates[0]">
+																</agm-marker>
+															</agm-map>
+														</div>
 
-                                                        <p class=""> <i class="fas fa-map-marker-alt"></i>
-                                                            {{doctorDetails.endereco?.logradouro}},
-                                                            {{doctorDetails.endereco?.numero}},
-                                                            {{doctorDetails.endereco?.bairro}},
-                                                            {{doctorDetails.endereco?.municipio}},
-                                                            {{doctorDetails.endereco?.estado}}
-                                                        </p>
+														<p class=""> <i class="fas fa-map-marker-alt"></i>
+															{{doctorDetails.endereco?.logradouro}},
+															{{doctorDetails.endereco?.numero}},
+															{{doctorDetails.endereco?.bairro}},
+															{{doctorDetails.endereco?.municipio}},
+															{{doctorDetails.endereco?.estado}}
+														</p>
 
-                                                        <!--<p class=""> <i class="fas fa-phone"></i>
+														<!--<p class=""> <i class="fas fa-phone"></i>
 															{{doctorDetails.contato?.telefone}} -
 															{{doctorDetails.contato?.email}}</p>-->
-                                                    </div>
+													</div>
 
 
-                                                    <div *ngIf="doctorDetails.estabelecimentos
+													<div *ngIf="doctorDetails.estabelecimentos
 															&& doctorDetails.estabelecimentos[0]
 															&& doctorDetails.estabelecimentos[0].cnpj" class="widget awards-widget">
 
-                                                        <h4 class="widget-title">Consultórios
-                                                            ({{doctorDetails.estabelecimentos.length}})
-                                                        </h4>
-                                                        <div class="experience-box">
+														<h4 class="widget-title">Consultórios
+															({{doctorDetails.estabelecimentos.length}})
+														</h4>
+														<div class="experience-box">
 
-                                                            <div
-                                                                *ngFor="let estabelecimento of doctorDetails.estabelecimentos; let i = index">
-                                                                <div style="width: 100%;">
-                                                                    <agm-map
-                                                                        [latitude]="estabelecimento.location.coordinates[1]"
-                                                                        [zoom]="10"
-                                                                        [longitude]="estabelecimento.location.coordinates[0]">
-                                                                        <agm-marker
-                                                                            [latitude]="estabelecimento.location.coordinates[1]"
-                                                                            [longitude]="estabelecimento.location.coordinates[0]">
-                                                                        </agm-marker>
-                                                                    </agm-map>
-                                                                </div>
+															<div
+																*ngFor="let estabelecimento of doctorDetails.estabelecimentos; let i = index">
+																<div style="width: 100%;">
+																	<agm-map
+																		[latitude]="estabelecimento.location.coordinates[1]"
+																		[zoom]="10"
+																		[longitude]="estabelecimento.location.coordinates[0]">
+																		<agm-marker
+																			[latitude]="estabelecimento.location.coordinates[1]"
+																			[longitude]="estabelecimento.location.coordinates[0]">
+																		</agm-marker>
+																	</agm-map>
+																</div>
 
-                                                                <p class=""> <i class="fas fa-map-marker-alt"></i>
-                                                                    {{estabelecimento.endereco?.logradouro}},
-                                                                    {{estabelecimento.endereco?.numero}},
-                                                                    {{estabelecimento.endereco?.bairro}},
-                                                                    {{estabelecimento.endereco?.municipio}},
-                                                                    {{estabelecimento.endereco?.estado}}
-                                                                </p>
-                                                            </div>
-
-
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
+																<p class=""> <i class="fas fa-map-marker-alt"></i>
+																	{{estabelecimento.endereco?.logradouro}},
+																	{{estabelecimento.endereco?.numero}},
+																	{{estabelecimento.endereco?.bairro}},
+																	{{estabelecimento.endereco?.municipio}},
+																	{{estabelecimento.endereco?.estado}}
+																</p>
+															</div>
 
 
+														</div>
+													</div>
+
+												</div>
+											</div>
 
 
-                                            <!-- FIM TAB LOCALIZACAO-->
-                                        </div>
 
 
-                                        <div class="tab-pane" id="bottom-justified-tab3">
+											<!-- FIM TAB LOCALIZACAO-->
+										</div>
 
-                                            <!--<div *ngIf="!doctorDetails.reviews">
+
+										<div class="tab-pane" id="bottom-justified-tab3">
+
+											<!--<div *ngIf="!doctorDetails.reviews">
 												<h4>Este médico ainda não possui feedback</h4>
 												<hr>
 											</div>-->
-                                            <hr>
-                                            <div *ngIf="doctorDetails.reviews">
-                                                <div class="comment" *ngFor="let review of doctorDetails.reviews">
-                                                    <img class="avatar rounded-circle" alt="User Image"
-                                                        src="https://image.freepik.com/vetores-gratis/medico-icone-ou-avatar-em-branco_136162-58.jpg">
-                                                    <div class="comment-body">
-                                                        <div class="meta-data">
-                                                            <span class="comment-author">{{review?.user?.nome ||
-                                                                review.nameUser}}</span>
-                                                            <span class="comment-date">
-                                                                <p>Enviado há {{getDataFormatada(review.createdAt)}}
-                                                                    dia(s)</p>
-                                                            </span>
-                                                            <div class="review-count rating">
-                                                                <label *ngFor="let item of [1,2,3,4,5]">
-                                                                    <i *ngIf="review.score >= item"
-                                                                        class="fas fa-star filled"></i>
-                                                                    <i *ngIf="review.score < item"
-                                                                        class="fas fa-star"></i>
-                                                                </label>
+											<hr>
+											<div *ngIf="doctorDetails.reviews">
+												<div class="comment" *ngFor="let review of doctorDetails.reviews">
+													<img class="avatar rounded-circle" alt="User Image"
+														src="https://image.freepik.com/vetores-gratis/medico-icone-ou-avatar-em-branco_136162-58.jpg">
+													<div class="comment-body">
+														<div class="meta-data">
+															<span class="comment-author">{{review?.user?.nome ||
+																review.nameUser}}</span>
+															<span class="comment-date">
+																<p>Enviado há {{getDataFormatada(review.createdAt)}}
+																	dia(s)</p>
+															</span>
+															<div class="review-count rating">
+																<label *ngFor="let item of [1,2,3,4,5]">
+																	<i *ngIf="review.score >= item"
+																		class="fas fa-star filled"></i>
+																	<i *ngIf="review.score < item"
+																		class="fas fa-star"></i>
+																</label>
 
 
-                                                            </div>
-                                                        </div>
-                                                        <p class="comment-content">
-                                                            {{review.description}}
-                                                        </p>
-                                                        <div class="comment-reply">
+															</div>
+														</div>
+														<p class="comment-content">
+															{{review.description}}
+														</p>
+														<div class="comment-reply">
 
-                                                            <p class="recommend-btn">
-                                                                <a *ngIf="review.like == true" class="like-btn">
-                                                                    <i class="far fa-thumbs-up"></i> Recomenda
-                                                                </a>
-                                                                <a *ngIf="review.like == false" class="dislike-btn">
-                                                                    <i class="far fa-thumbs-down"></i> Não recomenda
-                                                                </a>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                    <hr />
-                                                </div>
-
-
-                                            </div>
-
-                                            <div class="write-review">
-                                                <h4>O que você tem a dizer sobre <strong>{{doctorDetails.nome}}</strong>
-                                                </h4>
-
-                                                <!-- Write Review Form -->
-                                                <form>
-                                                    <div *ngIf="!user" class="form-group">
-                                                        <label>Nome</label>
-                                                        <input class="form-control" [(ngModel)]="review.nameUser"
-                                                            [ngModelOptions]="{standalone: true}" type="text"
-                                                            placeholder="Digite seu nome">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Nota</label>
-                                                        <div class="star-rating">
-                                                            <input id="star-5" [(ngModel)]="review.score" type="radio"
-                                                                name="rating" [value]="5">
-                                                            <label for="star-5" title="5 stars">
-                                                                <i class="active fa fa-star"></i>
-                                                            </label>
-                                                            <input id="star-4" [(ngModel)]="review.score" type="radio"
-                                                                name="rating" [value]="4">
-                                                            <label for="star-4" title="4 stars">
-                                                                <i class="active fa fa-star"></i>
-                                                            </label>
-                                                            <input id="star-3" [(ngModel)]="review.score" type="radio"
-                                                                name="rating" [value]="3">
-                                                            <label for="star-3" title="3 stars">
-                                                                <i class="active fa fa-star"></i>
-                                                            </label>
-                                                            <input id="star-2" [(ngModel)]="review.score" type="radio"
-                                                                name="rating" [value]="2">
-                                                            <label for="star-2" title="2 stars">
-                                                                <i class="active fa fa-star"></i>
-                                                            </label>
-                                                            <input id="star-1" [(ngModel)]="review.score" type="radio"
-                                                                name="rating" [value]="1">
-                                                            <label for="star-1" title="1 star">
-                                                                <i class="active fa fa-star"></i>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label>Comentário</label>
-                                                        <textarea id="review_desc"
-                                                            placeholder="Conte mais sobre seu atendimento"
-                                                            [(ngModel)]="review.description" maxlength="1000"
-                                                            name="message" #message='ngModel'
-                                                            class="form-control"></textarea>
-
-                                                        <div class="d-flex justify-content-between mt-3"><small
-                                                                class="text-muted"><span id="chars">1000</span>
-                                                                caracteres</small></div>
+															<p class="recommend-btn">
+																<a *ngIf="review.like == true" class="like-btn">
+																	<i class="far fa-thumbs-up"></i> Recomenda
+																</a>
+																<a *ngIf="review.like == false" class="dislike-btn">
+																	<i class="far fa-thumbs-down"></i> Não recomenda
+																</a>
+															</p>
+														</div>
+													</div>
+													<hr />
+												</div>
 
 
-                                                    </div>
-                                                    <div class="comment">
-                                                        <div class="comment-body">
-                                                            <div class="comment-reply">
+											</div>
 
-                                                                <p class="recommend-btn">
-                                                                    <span>Recomenda? </span>
-                                                                    <a style="cursor: pointer;"
-                                                                        [ngClass]="{'': isLikedComment == 0, 'btn btn-success': isLikedComment == 1}"
-                                                                        (click)="isLikedComment = 1" class="btn">
-                                                                        <i class="far fa-thumbs-up"></i> Sim
-                                                                    </a>
+											<div class="write-review">
+												<h4>O que você tem a dizer sobre <strong>{{doctorDetails.nome}}</strong>
+												</h4>
 
-                                                                    <a style="cursor: pointer;"
-                                                                        [ngClass]="{'': isLikedComment == 0, 'btn btn-danger': isLikedComment == 2}"
-                                                                        (click)="isLikedComment = 2" class="btn">
-                                                                        <i class="far fa-thumbs-down"></i> Não
-                                                                    </a>
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <hr>
-                                                    <div class="form-group">
-                                                        <div class="terms-accept">
-                                                            <div class="custom-checkbox">
-                                                                <input type="checkbox" id="terms_accept">
-                                                                <label for="terms_accept">Li e concordo com os termos <a
-                                                                        href="javascript:void(0)">Termos &amp;
-                                                                        Condições</a></label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="submit-section">
-                                                        <button (click)="sendReview()"
-                                                            class="btn btn-primary submit-btn">Adicionar
-                                                            Feedback</button>
-                                                    </div>
+												<!-- Write Review Form -->
+												<form>
+													<div *ngIf="!user" class="form-group">
+														<label>Nome</label>
+														<input class="form-control" [(ngModel)]="review.nameUser"
+															[ngModelOptions]="{standalone: true}" type="text"
+															placeholder="Digite seu nome">
+													</div>
+													<div class="form-group">
+														<label>Nota</label>
+														<div class="star-rating">
+															<input id="star-5" [(ngModel)]="review.score" type="radio"
+																name="rating" [value]="5">
+															<label for="star-5" title="5 stars">
+																<i class="active fa fa-star"></i>
+															</label>
+															<input id="star-4" [(ngModel)]="review.score" type="radio"
+																name="rating" [value]="4">
+															<label for="star-4" title="4 stars">
+																<i class="active fa fa-star"></i>
+															</label>
+															<input id="star-3" [(ngModel)]="review.score" type="radio"
+																name="rating" [value]="3">
+															<label for="star-3" title="3 stars">
+																<i class="active fa fa-star"></i>
+															</label>
+															<input id="star-2" [(ngModel)]="review.score" type="radio"
+																name="rating" [value]="2">
+															<label for="star-2" title="2 stars">
+																<i class="active fa fa-star"></i>
+															</label>
+															<input id="star-1" [(ngModel)]="review.score" type="radio"
+																name="rating" [value]="1">
+															<label for="star-1" title="1 star">
+																<i class="active fa fa-star"></i>
+															</label>
+														</div>
+													</div>
 
-                                                </form>
-                                                <!-- /Write Review Form -->
+													<div class="form-group">
+														<label>Comentário</label>
+														<textarea id="review_desc"
+															placeholder="Conte mais sobre seu atendimento"
+															[(ngModel)]="review.description" maxlength="1000"
+															name="message" #message='ngModel'
+															class="form-control"></textarea>
 
-                                            </div>
+														<div class="d-flex justify-content-between mt-3"><small
+																class="text-muted"><span id="chars">1000</span>
+																caracteres</small></div>
 
 
-                                        </div>
+													</div>
+													<div class="comment">
+														<div class="comment-body">
+															<div class="comment-reply">
+
+																<p class="recommend-btn">
+																	<span>Recomenda? </span>
+																	<a style="cursor: pointer;"
+																		[ngClass]="{'': isLikedComment == 0, 'btn btn-success': isLikedComment == 1}"
+																		(click)="isLikedComment = 1" class="btn">
+																		<i class="far fa-thumbs-up"></i> Sim
+																	</a>
+
+																	<a style="cursor: pointer;"
+																		[ngClass]="{'': isLikedComment == 0, 'btn btn-danger': isLikedComment == 2}"
+																		(click)="isLikedComment = 2" class="btn">
+																		<i class="far fa-thumbs-down"></i> Não
+																	</a>
+																</p>
+															</div>
+														</div>
+													</div>
+													<hr>
+													<div class="form-group">
+														<div class="terms-accept">
+															<div class="custom-checkbox">
+																<input type="checkbox" id="terms_accept">
+																<label for="terms_accept">Li e concordo com os termos <a
+																		href="javascript:void(0)">Termos &amp;
+																		Condições</a></label>
+															</div>
+														</div>
+													</div>
+													<div class="submit-section">
+														<button (click)="sendReview()"
+															class="btn btn-primary submit-btn">Adicionar
+															Feedback</button>
+													</div>
+
+												</form>
+												<!-- /Write Review Form -->
+
+											</div>
 
 
-                                        <!-- FIM TAB COMENTARIOS-->
-                                    </div>
-                                    <!--
+										</div>
+
+
+										<!-- FIM TAB COMENTARIOS-->
+									</div>
+									<!--
 									<div class="tab-pane" id="bottom-justified-tab4">
 
 										<div class="row">
@@ -850,15 +852,15 @@
 
 
 									</div>-->
-                                    <!-- FIM TAB HORARIOS -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+									<!-- FIM TAB HORARIOS -->
+								</div>
+							</div>
+						</div>
+					</div>
 
 
-                </div>
-                <!-- /Doctor Details Tab -->
+				</div>
+				<!-- /Doctor Details Tab -->
 
-            </div>
-        </div>
+			</div>
+		</div>

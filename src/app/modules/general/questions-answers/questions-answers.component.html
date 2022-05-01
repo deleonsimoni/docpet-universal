@@ -145,7 +145,7 @@
                         </div>
                         <div>
                             <h2>Tempo de Resposta</h2>
-                            <p>Nosso time de veterinários especializados está pronto para receber e responder a sua
+                            <p>Nosso time de veterinários especializados está pronto para responder a sua
                                 dúvida com experiência e rapidez. Uma resposta será postada em até 48h.</p>
 
                         </div>
@@ -167,7 +167,7 @@
                                 <i class="fe fe-users"></i>
                             </span>
                             <div class="dash-count">
-                                <h3>{{dashboard.counts.totalPerguntas || 0}}</h3>
+                                <h3>{{dashboard?.counts.totalPerguntas || 0}}</h3>
                             </div>
                         </div>
                         <div class="dash-widget-info">
@@ -187,7 +187,7 @@
                                 <i class="fe fe-credit-card"></i>
                             </span>
                             <div class="dash-count">
-                                <h3>{{dashboard.counts.totalRespostas || 0}}</h3>
+                                <h3>{{dashboard?.counts.totalRespostas || 0}}</h3>
                             </div>
                         </div>
                         <div class="dash-widget-info">
@@ -208,7 +208,7 @@
                                 <i class="fe fe-money"></i>
                             </span>
                             <div class="dash-count">
-                                <h3>{{dashboard.counts.totalProfissionais || 0}}</h3>
+                                <h3>{{dashboard?.counts.totalProfissionais || 0}}</h3>
                             </div>
                         </div>
                         <div class="dash-widget-info">

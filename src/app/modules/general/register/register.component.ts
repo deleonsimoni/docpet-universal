@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Veterinario } from '../../application/model/veterinario';
 import { CEPService } from '../../application/services/cep.service';
@@ -41,6 +41,9 @@ export class RegisterComponent implements OnInit {
   pathImage;
   formDataImg;
 
+  nome;
+  email;
+
   listaAnos = [];
   meses = [{ id: 1, mes: 'Janeiro', abreviado: 'Jan' },
   { id: 2, mes: 'Fevereiro', abreviado: 'Fev' },
@@ -66,7 +69,13 @@ export class RegisterComponent implements OnInit {
     private toastr: ToastrService,
     private userService: UserService,
     private uploadImagemService: UploadImagemService,
-  ) { }
+    private route: ActivatedRoute,
+  ) {
+
+    this.nome = this.route.snapshot.params['nome'];
+    this.email = this.route.snapshot.params['email'];
+
+  }
 
   ngOnInit(): void {
     var ano = new Date().getFullYear();
@@ -160,8 +169,8 @@ export class RegisterComponent implements OnInit {
     this.form = this.formBuilder.group(
       {
 
-        nome: ['', [Validators.required]],
-        email: ['', [Validators.required]],
+        nome: [this.nome || '', [Validators.required]],
+        email: [this.email || '', [Validators.required]],
         password: ['', [Validators.required]],
         confirmpassword: ['', [Validators.required]],
 
@@ -444,7 +453,7 @@ export class RegisterComponent implements OnInit {
         } else if (user.role == 1 || user.role == 2 || user.role == 3 || user.role == 4) {
           this.router.navigate(['/admin']);
         } else {
-          window.location.href = '/home';
+          window.location.href = '';
         }
       },
       (error) => {

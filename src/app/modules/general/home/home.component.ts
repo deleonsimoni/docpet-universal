@@ -149,7 +149,7 @@ export class HomeComponent implements OnInit {
       //this.role = document.getElementById("role")["value"];
       this.dadosCadastro.push({ nome: this.nome, email: this.email, role: this.role });
 
-      this.router.navigate(['/cadastro/' + this.nome + '/' + this.email + '/' + this.role]);
+      this.router.navigate(['/registro/' + this.nome + '/' + this.email]);
 
     } else {
       this.toastr.warning('Preencha o nome, e-mail e tipo', 'Atenção!');

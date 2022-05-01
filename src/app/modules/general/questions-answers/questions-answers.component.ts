@@ -113,7 +113,7 @@ export class QuestionsAnswersComponent implements OnInit {
     this.especialidadeSevice.getAll()
       .subscribe(
         data => {
-          this.especialidades = data;
+          this.especialidades = data.data;
         },
         error => {
           console.log(error);
@@ -138,10 +138,12 @@ export class QuestionsAnswersComponent implements OnInit {
       .subscribe(
         data => {
           this.dashboard = data;
-          if (this.dashboard.counts && this.dashboard.counts.totalRespostas) {
-            this.dashboard.counts.totalRespostas = this.dashboard.counts.totalRespostas.reduce(function (a, b) {
-              return a + b['respostasSize'];
-            }, 0);
+          if (this.dashboard) {
+            if (this.dashboard.counts && this.dashboard.counts.totalRespostas) {
+              this.dashboard.counts.totalRespostas = this.dashboard.counts.totalRespostas.reduce(function (a, b) {
+                return a + b['respostasSize'];
+              }, 0);
+            }
           }
         },
         error => {

@@ -70,7 +70,7 @@ const routes: Routes = [
       .then((m) => m.ClinicProfileModule),
   },
   {
-    path: 'registro',
+    path: 'registro/:nome/:email',
     loadChildren: () =>
       import('./modules/general/register/register.module')
         .then((m) => m.RegisterModule),
