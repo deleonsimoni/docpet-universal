@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './modules/general/common/header/header.component';
@@ -42,6 +42,7 @@ import { NgxMaskModule } from 'ngx-mask';
     NgxMaskModule.forRoot({ dropSpecialCharacters: false }),
 
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
   bootstrap: [AppComponent]
 })
