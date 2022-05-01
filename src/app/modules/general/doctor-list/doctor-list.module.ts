@@ -19,6 +19,8 @@ import { AgmCoreModule } from '@agm/core';
       apiKey: 'AIzaSyC39y1TCyvZP0bU7Pur_SBfySWjSy5qhEg'
     }),
 
+  ], providers: [
+
   ]
 })
 export class DoctorListModule { }
