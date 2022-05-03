@@ -1,5 +1,6 @@
 export const environment = {
   production: true,
+  apiURL: 'https://vetzco.com.br/vetzco-api/v1/',
   application:
   {
     name: 'angular-starter',

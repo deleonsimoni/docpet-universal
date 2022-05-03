@@ -1,7 +1,8 @@
 export const environment = {
   production: false,
   title: 'Local Environment Heading',
-  apiURL: 'http://localhost:3001/v1/',
+  apiURL: 'https://vetzco.com.br/vetzco-api/v1/',
+  //apiURL: 'http://localhost:3001/v1/',
   application:
   {
     name: 'angular-starter',
